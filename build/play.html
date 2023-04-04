@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/ce99412822.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="relative m-0 p-0" onload="load()">
+    <nav
+      class="flex bg-black h-16 w-screen fixed top-0 justify-between items-center z-10"
+    >
+      <ul>
+        <li class="sm:ml-6 flex ml-[1vw]">
+          <img src="../logo10.jpg" alt="Spotify" class="h-14" srcset="" />
+          <span
+            class="text-white font-semibold text-2xl pt-2 pl-4 sm:block hidden"
+          >
+            Spotify</span
+          >
+        </li>
+      </ul>
+      <ul class="flex sm:mx-8 mx-4 sm:space-x-4">
+        <li class="hover:text-white hover:cursor-pointer text-gray-300">
+          <a href="index.html" class="text-[2.2vh]"
+            ><i
+              class="fa fa-home sm:mr-4 sm:visible invisible"
+              aria-hidden="true"
+            ></i
+            ><span class="text-green-500">Home</span></a
+          >
+        </li>
+        <li
+          class="hover:text-white hover:cursor-pointer text-gray-300 text-[2.2vh]"
+        >
+          <i
+            class="fa fa-search sm:mr-4 mr-1 sm:visible invisible"
+            aria-hidden="true"
+          ></i>
+          <h1 class="sm:text-green-500 text-green-400 inline">Search</h1>
+        </li>
+      </ul>
+    </nav>
+    <!-- main -->
+
+    <div
+      class="h-screen w-screen relative bg-gradient-to-t from-rose-100 to-green-500"
+      id="BG"
+    >
+      <div class="IMG img flex justify-center items-center mt-16 mb-0">
+        <img
+          src=""
+          alt=""
+          class="sm:h-[25vw] sm:w-[25vw] sm:mt-8 sm:mb-0 sm:shadow-2xl mt-[10vh] h-[80vw] w-[80vw] shadow-black shadow-2xl rounded-xl sm:shadow-black"
+          id="cvr"
+        />
+      </div>
+
+      <div
+        class="btm flex justify-center sm:h-11 sm:mt-10 sm:pt-0 relative mt-[23vh]"
+      >
+        <i
+          class="fa-solid fa-heart text-white fa-2x absolute sm:right-24 sm:bottom-5 right-8 bottom-6"
+          id="icon"
+        ></i>
+        <span
+          class="absolute sm:left-24 bottom-9 left-8 text-white font-semibold text-xl"
+          id="song_name"
+        >
+        </span>
+        <span
+          class="font-bold text-sm absolute left-24 mt-1 text-green-600"
+          id="artist"
+        ></span>
+        <input
+          type="range"
+          name=""
+          id="bar"
+          class="w-[90%] sm:mt-6 p-0 cursor-pointer bg-green-400"
+          value="0"
+          min="0"
+          max="100"
+        />
+      </div>
+
+      <div class="flex justify-center items-center h-11 mt-8 space-x-7">
+        <button>
+          <i
+            class="fa-solid fa-backward-step fa-5x"
+            id="prev"
+            onclick="prev();"
+          ></i>
+        </button>
+        <button><i class="fa-solid fa-circle-play fa-5x" id="play"></i></button>
+
+        <button>
+          <i
+            class="fa-solid fa-forward-step fa-5x"
+            id="next"
+            onclick="next();"
+          ></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      console.log("Welcome To Spotify");
+
+let song1 = localStorage.getItem("song");
+let audioElement = new Audio(song1); // audioElement is a variable
+let play = document.getElementById("play");
+let bar = document.getElementById("bar");
+let cvr = document.getElementById("cvr");
+cvr.src = localStorage.getItem("id");
+let song_name = document.getElementById("song_name");
+song_name.innerText = localStorage.getItem("song_name");
+let artist = document.getElementById("artist");
+artist.innerText = localStorage.getItem("artist");
+
+load = () => {
+  audioElement.play();
+  play.classList.remove("fa-circle-play");
+  play.classList.add("fa-circle-pause");
+};
+
+// audioElement.play()
+//Handle play/pause click
+play.addEventListener("click", () => {
+  if (audioElement.paused || audioElement.currentTime <= 0) {
+    audioElement.play();
+    play.classList.remove("fa-circle-play"); // arg = class name
+    play.classList.add("fa-circle-pause");
+  } else {
+    audioElement.pause();
+    play.classList.remove("fa-circle-pause");
+    play.classList.add("fa-circle-play");
+  }
+});
+// Listen to Events
+update_bar = () => {
+  audioElement.addEventListener("timeupdate", () => {
+    // time update is an event just like 'click' and it is an audio event
+    console.log("time update");
+    //Update seekbar
+    progress = parseInt(
+      (audioElement.currentTime / audioElement.duration) * 100
+    );
+    // The above code is (currentTime of audio) divided by (duration of the audio) multiplied by 100 to get a percentage of completion of the audio
+    console.log(progress);
+    bar.value = progress; // Makes the bar move according to the duartion of the song
+    // In short here we give the value to the progress bar which is calcutated previously
+  });
+
+  // Updating the song as we click on the seek
+
+  bar.addEventListener("change", () => {
+    audioElement.currentTime = (bar.value * audioElement.duration) / 100;
+  });
+};
+update_bar();
+let i = document.getElementById("icon");
+
+i.addEventListener("click", () => {
+  // For the like btn
+  if (i.classList.contains("text-white")) {
+    i.classList.remove("text-white");
+    i.classList.add("text-green-500");
+  } else {
+    i.classList.remove("text-green-500");
+    i.classList.add("text-white");
+  }
+});
+let next = document.getElementById("next");
+// if ((process = 100)) {
+//   next();
+// }
+next = () => {
+  class Nextsong {
+    constructor(id, song_name, artist, song) {
+      this.id = id;
+      this.song_name = song_name;
+      this.artist = artist;
+      this.song = song;
+    }
+    playnext = () => {
+      audioElement.pause();
+
+      localStorage.setItem("id", this.id);
+      localStorage.setItem("song_name", this.song_name);
+      localStorage.setItem("artist", this.artist);
+
+      localStorage.setItem("song", this.song);
+      cvr.src = localStorage.getItem("id");
+      artist.innerText = localStorage.getItem("artist");
+      song_name.innerText = localStorage.getItem("song_name");
+      song1 = localStorage.getItem("song");
+      audioElement = new Audio(song1);
+      audioElement.play();
+      update_bar();
+    };
+  }
+  switch (localStorage.id) {
+    case "img/1.jpeg":
+      let ns1 = new Nextsong("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+      ns1.playnext();
+      break;
+    case "img/2.jpeg":
+      let ns2 = new Nextsong(
+        "img/3.jpeg",
+        "Lose You To Love Me",
+        "Salena Gomez",
+        "songs/3.mp3"
+      );
+      ns2.playnext();
+      break;
+    case "img/3.jpeg":
+      let ns3 = new Nextsong(
+        "img/4.jpeg",
+        "Bombay To Punjab",
+        "Deep Jandu, DIVINE",
+        "songs/4.mp3"
+      );
+      ns3.playnext();
+      break;
+    case "img/4.jpeg":
+      let ns4 = new Nextsong("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
+      ns4.playnext();
+      break;
+    case "img/5.jpeg":
+      let ns5 = new Nextsong("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
+      ns5.playnext();
+      break;
+    case "img/6.jpeg":
+      let ns6 = new Nextsong(
+        "img/7.jpeg",
+        "Goliya",
+        "Yo Yo Honey Singh",
+        "songs/7.mp3"
+      );
+      ns6.playnext();
+      break;
+    case "img/7.jpeg":
+      let ns7 = new Nextsong(
+        "img/1.jpeg",
+        "Slim Shady",
+        "Eminem",
+        "songs/1.mp3"
+      );
+      ns7.playnext();
+      break;
+    default:
+      break;
+  }
+};
+
+prev = () => {
+  class Prevsong {
+    constructor(id, song_name, artist, song) {
+      this.id = id;
+      this.song_name = song_name;
+      this.artist = artist;
+      this.song = song;
+    }
+    playprev = () => {
+      audioElement.pause();
+
+      localStorage.setItem("id", this.id);
+      localStorage.setItem("song_name", this.song_name);
+      localStorage.setItem("artist", this.artist);
+
+      localStorage.setItem("song", this.song);
+      cvr.src = localStorage.getItem("id");
+      artist.innerText = localStorage.getItem("artist");
+      song_name.innerText = localStorage.getItem("song_name");
+      song1 = localStorage.getItem("song");
+      audioElement = new Audio(song1);
+      audioElement.play();
+      update_bar();
+    };
+  }
+  switch (localStorage.id) {
+    case "img/1.jpeg":
+      // let ps1= new Prevsong()
+
+      let ps1 = new Prevsong(
+        "img/7.jpeg",
+        "Goliya",
+        "Yo Yo Honey Singh",
+        "songs/7.mp3"
+      );
+      ps1.playprev();
+      break;
+    case "img/2.jpeg":
+      let ps2 = new Prevsong(
+        "img/1.jpeg",
+        "Slim Shady",
+        "Eminem",
+        "songs/1.mp3"
+      );
+      ps2.playprev();
+      break;
+    case "img/3.jpeg":
+      let ps3 = new Prevsong("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+      ps3.playprev();
+      break;
+    case "img/4.jpeg":
+      let ps4 = new Prevsong(
+        "img/3.jpeg",
+        "Lose You To Love Me",
+        "Salena Gomez",
+        "songs/3.mp3"
+      );
+      ps4.playprev();
+      break;
+    case "img/5.jpeg":
+      let ps5 = new Prevsong(
+        "img/4.jpeg",
+        "Bombay To Punjab",
+        "Deep Jandu, DIVINE",
+        "songs/4.mp3"
+      );
+      ps5.playprev();
+      break;
+    case "img/6.jpeg":
+      let ps6 = new Prevsong("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
+      ps6.playprev();
+      break;
+    case "img/7.jpeg":
+      let ps7 = new Prevsong("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
+      ps7.playprev();
+      break;
+
+    default:
+      break;
+  }
+};
+
+    </script>
+  </body>
+</html>
