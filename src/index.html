@@ -9,8 +9,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Spotify-Web player</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Spotify | Web player</title>
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script
@@ -31,7 +31,7 @@
       >
         <a href="index.html" class="sm:inline hidden">
           <div class="flex">
-            <img src="../logo10.jpg" alt="Spotify Logo" class="h-16 bg-white" />
+            <img src="/public/logo10.jpg" alt="Spotify Logo" class="h-16 bg-white" />
             <span class="text-white font-semibold text-2xl pt-4 pl-4">
               Spotify</span
             >
@@ -133,7 +133,7 @@
         class="sm:flex sm:justify-evenly sm:mx-0 mx-[5vw] flex sm:w-[100%] sm:overflow-hidden overflow-y-scroll sm:space-x-0 space-x-[5vw]"
       >
         <!-- // 1st card// -->
-        <a href="play.html" class="music" id="1" onclick="run1.fill();">
+        <a href="/src/Components/play.html" class="music" id="1" onclick="run1.fill();">
         <div
           class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw]">
           <div class="sm:mx-4 sm:my-4 songItems mx-2 my-2">
@@ -154,7 +154,7 @@
           </div>
         </div>
 
-        <a href="play.html" class="music" id="2" onclick="run2.fill();">
+        <a href="/src/Components/play.html" class="music" id="2" onclick="run2.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw]"
           >
@@ -179,7 +179,7 @@
 
         <!-- \\ 3rd card \\  -->
 
-        <a href="play.html" class="music" id="3" onclick="run3.fill();">
+        <a href="/src/Components/play.html" class="music" id="3" onclick="run3.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw]"
           >
@@ -203,7 +203,7 @@
         </a>
         <!-- \\ 4th card  -->
 
-        <a href="play.html" class="music" id="4" onclick="run4.fill();">
+        <a href="/src/Components/play.html" class="music" id="4" onclick="run4.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw]"
           >
@@ -227,7 +227,7 @@
         </a>
         <!-- \\ 5th Card \\  -->
 
-        <a href="play.html" class="music" id="5" onclick="run5.fill();">
+        <a href="/src/Components/play.html" class="music" id="5" onclick="run5.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw]"
           >
@@ -266,7 +266,7 @@
       </ul>
       <div class="flex mx-[5vw]">
         <!-- \\ part 2 card 1 \\  -->
-        <a href="play.html" class="music" id="6" onclick="run6.fill();">
+        <a href="/src/Components/play.html" class="music" id="6" onclick="run6.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw] mx-[5vw]"
           >
@@ -289,7 +289,7 @@
           </div>
         </a>
         <!-- \\ part 2 card 2  -->
-        <a href="play.html" class="music" id="7" onclick="run7.fill();">
+        <a href="/src/Components/play.html" class="music" id="7" onclick="run7.fill();">
           <div
             class="sm:bg-[#121212] sm:h-[268px] sm:w-[188px] sm:rounded-lg bg-[#121212] sm:p-0 h-[17vh] w-[25vw] mx-[5vw]"
           >
@@ -313,51 +313,52 @@
         </a>
       </div>
     </div>
-    <script>
-      let songItem = Array.from(document.getElementsByClassName("songItems"));
+<!-- <script src="/script1.js"></script> -->
+<script>
+  let songItem = Array.from(document.getElementsByClassName("songItems"));
 let songItemR = Array.from(document.getElementsByClassName("songItemsR"));
 
 songs = [
   {
     songName: "Slim shady",
-    file: "songs/1.mp3",
-    cover: "img/1.jpeg",
+    file: "/public/assests/songs/1.mp3",
+    cover: "/public/assests/img/1.jpeg",
     Disc: '"The Real Slim Shady" is a song by American rapper Eminem',
   },
   {
     songName: "Criminal",
-    file: "songs/2.mp3",
-    cover: "img/2.jpeg",
+    file: "/public/assests/songs/2.mp3",
+    cover: "/public/assests/img/2.jpeg",
     Disc: "The Criminal Lyrics from Ra One",
   },
   {
     songName: "Lose you To love Me",
-    file: "songs/3.mp3",
-    cover: "img/3.jpeg",
+    file: "/public/assests/songs/3.mp3",
+    cover: "/public/assests/img/3.jpeg",
     Disc: "Song by Selena Gomeez",
   },
   {
     songName: "Bombay To Punjab",
-    file: "songs/4.mp3",
-    cover: "img/4.jpeg",
+    file: "/public/assests/songs/4.mp3",
+    cover: "/public/assests/img/4.jpeg",
     Disc: "Song by Deep Jandu and Divine",
   },
   {
     songName: "One Dance",
-    file: "songs/5.mp3",
-    cover: "img/5.jpeg",
+    file: "/public/assests/songs/5.mp3",
+    cover: "/public/assests/img/5.jpeg",
     Disc: '"One Dance" is a song by Canadian rapper and singer Drake',
   },
   {
     songName: "Flo Rida- Low",
-    file: "songs/6.mp3",
-    cover: "img/6.jpeg",
+    file: "/public/assests/songs/6.mp3",
+    cover: "/public/assests/img/6.jpeg",
     Disc: '"Low" is the debut by rapper and singer Flo Rida',
   },
   {
     songName: "Goliya",
-    file: "songs/7.mp3",
-    cover: "img/7.jpeg",
+    file: "/public/assests/songs/7.mp3",
+    cover: "/public/assests/img/7.jpeg",
     Disc: "Song by Diljit Dosanjh and Honey Singh",
   },
 ];
@@ -395,24 +396,24 @@ class Run {
     localStorage.setItem("song", this.song);
   };
 }
-let run1 = new Run("img/1.jpeg", "Slim Shady", "Eminem", "songs/1.mp3");
-let run2 = new Run("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+let run1 = new Run("/public/assests/img/1.jpeg", "Slim Shady", "Eminem", "/public/assests/songs/1.mp3");
+let run2 = new Run("/public/assests/img/2.jpeg", "Criminal", "Akon", "/public/assests/songs/2.mp3");
 let run3 = new Run(
-  "img/3.jpeg",
+  "/public/assests/img/3.jpeg",
   "Lose You To Love Me",
   "Salena Gomez",
-  "songs/3.mp3"
+  "/public/assests/songs/3.mp3"
 );
 let run4 = new Run(
-  "img/4.jpeg",
+  "/public/assests/img/4.jpeg",
   "Bombay To Punjab",
   "Deep Jandu, DIVINE",
-  "songs/4.mp3"
+  "/public/assests/songs/4.mp3"
 );
-let run5 = new Run("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
-let run6 = new Run("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
-let run7 = new Run("img/7.jpeg", "Goliya", "Yo Yo Honey Singh", "songs/7.mp3");
+let run5 = new Run("/public/assests/img/5.jpeg", "One Dance", "Drake", "/public/assests/songs/5.mp3");
+let run6 = new Run("/public/assests/img/6.jpeg", "LOW", "Flo Rida", "/public/assests/songs/6.mp3");
+let run7 = new Run("/public/assests/img/7.jpeg", "Goliya", "Yo Yo Honey Singh", "/public/assests/songs/7.mp3");
 
-    </script>
+</script>
   </body>
 </html>

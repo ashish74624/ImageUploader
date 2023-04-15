@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Player</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style1.css" />
     <script
       src="https://kit.fontawesome.com/ce99412822.js"
       crossorigin="anonymous"
@@ -18,7 +18,7 @@
     >
       <ul>
         <li class="sm:ml-6 flex ml-[1vw]">
-          <img src="../logo10.jpg" alt="Spotify" class="h-14" srcset="" />
+          <img src="/public/logo10.jpg" alt="Spotify" class="h-14" srcset="" />
           <span
             class="text-white font-semibold text-2xl pt-2 pl-4 sm:block hidden"
           >
@@ -108,8 +108,9 @@
         </button>
       </div>
     </div>
-    <script>
-      console.log("Welcome To Spotify");
+<!-- <script src="/script.js"></script> -->
+<script>
+  // console.log("Welcome To Spotify");
 
 let song1 = localStorage.getItem("song");
 let audioElement = new Audio(song1); // audioElement is a variable
@@ -205,51 +206,51 @@ next = () => {
     };
   }
   switch (localStorage.id) {
-    case "img/1.jpeg":
-      let ns1 = new Nextsong("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+    case "/public/assests/img/1.jpeg":
+      let ns1 = new Nextsong("/public/assests/img/2.jpeg", "Criminal", "Akon", "/public/assests/songs/2.mp3");
       ns1.playnext();
       break;
-    case "img/2.jpeg":
+    case "/public/assests/img/2.jpeg":
       let ns2 = new Nextsong(
-        "img/3.jpeg",
+        "/public/assests/img/3.jpeg",
         "Lose You To Love Me",
         "Salena Gomez",
-        "songs/3.mp3"
+        "/public/assests/songs/3.mp3"
       );
       ns2.playnext();
       break;
-    case "img/3.jpeg":
+    case "/public/assests/img/3.jpeg":
       let ns3 = new Nextsong(
-        "img/4.jpeg",
+        "/public/assests/img/4.jpeg",
         "Bombay To Punjab",
         "Deep Jandu, DIVINE",
-        "songs/4.mp3"
+        "/public/assests/songs/4.mp3"
       );
       ns3.playnext();
       break;
-    case "img/4.jpeg":
-      let ns4 = new Nextsong("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
+    case "/public/assests/img/4.jpeg":
+      let ns4 = new Nextsong("/public/assests/img/5.jpeg", "One Dance", "Drake", "/public/assests/songs/5.mp3");
       ns4.playnext();
       break;
-    case "img/5.jpeg":
-      let ns5 = new Nextsong("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
+    case "/public/assests/img/5.jpeg":
+      let ns5 = new Nextsong("/public/assests/img/6.jpeg", "LOW", "Flo Rida", "/public/assests/songs/6.mp3");
       ns5.playnext();
       break;
-    case "img/6.jpeg":
+    case "/public/assests/img/6.jpeg":
       let ns6 = new Nextsong(
-        "img/7.jpeg",
+        "/public/assests/img/7.jpeg",
         "Goliya",
         "Yo Yo Honey Singh",
-        "songs/7.mp3"
+        "/public/assests/songs/7.mp3"
       );
       ns6.playnext();
       break;
-    case "img/7.jpeg":
+    case "/public/assests/img/7.jpeg":
       let ns7 = new Nextsong(
-        "img/1.jpeg",
+        "/public/assests/img/1.jpeg",
         "Slim Shady",
         "Eminem",
-        "songs/1.mp3"
+        "/public/assests/songs/1.mp3"
       );
       ns7.playnext();
       break;
@@ -284,54 +285,54 @@ prev = () => {
     };
   }
   switch (localStorage.id) {
-    case "img/1.jpeg":
+    case "/public/assests/img/1.jpeg":
       // let ps1= new Prevsong()
 
       let ps1 = new Prevsong(
-        "img/7.jpeg",
+        "/public/assests/img/7.jpeg",
         "Goliya",
         "Yo Yo Honey Singh",
-        "songs/7.mp3"
+        "/public/assests/songs/7.mp3"
       );
       ps1.playprev();
       break;
-    case "img/2.jpeg":
+    case "/public/assests/img/2.jpeg":
       let ps2 = new Prevsong(
-        "img/1.jpeg",
+        "/public/assests/img/1.jpeg",
         "Slim Shady",
         "Eminem",
-        "songs/1.mp3"
+        "/public/assests/songs/1.mp3"
       );
       ps2.playprev();
       break;
-    case "img/3.jpeg":
-      let ps3 = new Prevsong("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+    case "/public/assests/img/3.jpeg":
+      let ps3 = new Prevsong("/public/assests/img/2.jpeg", "Criminal", "Akon", "/public/assests/songs/2.mp3");
       ps3.playprev();
       break;
-    case "img/4.jpeg":
+    case "/public/assests/img/4.jpeg":
       let ps4 = new Prevsong(
-        "img/3.jpeg",
+        "/public/assests/img/3.jpeg",
         "Lose You To Love Me",
         "Salena Gomez",
-        "songs/3.mp3"
+        "/public/assests/songs/3.mp3"
       );
       ps4.playprev();
       break;
-    case "img/5.jpeg":
+    case "/public/assests/img/5.jpeg":
       let ps5 = new Prevsong(
-        "img/4.jpeg",
+        "/public/assests/img/4.jpeg",
         "Bombay To Punjab",
         "Deep Jandu, DIVINE",
-        "songs/4.mp3"
+        "/public/assests/songs/4.mp3"
       );
       ps5.playprev();
       break;
-    case "img/6.jpeg":
-      let ps6 = new Prevsong("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
+    case "/public/assests/img/6.jpeg":
+      let ps6 = new Prevsong("/public/assests/img/5.jpeg", "One Dance", "Drake", "/public/assests/songs/5.mp3");
       ps6.playprev();
       break;
-    case "img/7.jpeg":
-      let ps7 = new Prevsong("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
+    case "/public/assests/img/7.jpeg":
+      let ps7 = new Prevsong("/public/assests/img/6.jpeg", "LOW", "Flo Rida", "/public/assests/songs/6.mp3");
       ps7.playprev();
       break;
 
@@ -340,6 +341,6 @@ prev = () => {
   }
 };
 
-    </script>
+</script>
   </body>
 </html>

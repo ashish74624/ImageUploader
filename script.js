@@ -1,4 +1,4 @@
-console.log("Welcome To Spotify");
+// console.log("Welcome To Spotify");
 
 let song1 = localStorage.getItem("song");
 let audioElement = new Audio(song1); // audioElement is a variable
