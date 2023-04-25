@@ -17,20 +17,20 @@
       class="flex bg-black h-16 w-screen fixed top-0 justify-between items-center z-10"
     >
       <ul>
-        <li class="sm:ml-6 flex ml-[1vw]">
+        <li class="lg:ml-6 flex ml-[1vw]">
           <img src="/logo10.jpg" alt="Spotify" class="h-14" srcset="" />
           <span
-            class="text-white font-semibold text-2xl pt-2 pl-4 sm:block hidden"
+            class="text-white font-semibold text-2xl pt-2 pl-4 lg:block hidden"
           >
             Spotify</span
           >
         </li>
       </ul>
-      <ul class="flex sm:mx-8 mx-4 sm:space-x-4">
+      <ul class="flex lg:mx-8 mx-4 lg:space-x-4">
         <li class="hover:text-white hover:cursor-pointer text-gray-300">
           <a href="index.html" class="text-[2.2vh]"
             ><i
-              class="fa fa-home sm:mr-4 sm:visible invisible"
+              class="fa fa-home lg:mr-4 lg:visible invisible"
               aria-hidden="true"
             ></i
             ><span class="text-green-500">Home</span></a
@@ -40,10 +40,10 @@
           class="hover:text-white hover:cursor-pointer text-gray-300 text-[2.2vh]"
         >
           <i
-            class="fa fa-search sm:mr-4 mr-1 sm:visible invisible"
+            class="fa fa-search lg:mr-4 mr-1 lg:visible invisible"
             aria-hidden="true"
           ></i>
-          <h1 class="sm:text-green-500 text-green-400 inline">Search</h1>
+          <h1 class="lg:text-green-500 text-green-400 inline">Search</h1>
         </li>
       </ul>
     </nav>
@@ -53,36 +53,39 @@
       class="h-screen w-screen relative bg-gradient-to-t from-rose-100 to-green-500"
       id="BG"
     >
-      <div class="IMG img flex justify-center items-center mt-16 mb-0 md:h-[73%] h-[50%] w-screen">
+      <div class="IMG img flex justify-center items-center mt-16 mb-0 lg:h-[60%]  h-[50%] w-screen">
         <img
           src=""
           alt=""
-          class="sm:h-[25vw] sm:w-[25vw] sm:mt-8 sm:mb-0 sm:shadow-2xl mt-[10vh] h-[80vw] w-[80vw] shadow-black shadow-2xl rounded-xl sm:shadow-black"
+          class="lg:h-[25vw] md:h-[60vw] md:w-[60vw] lg:w-[25vw] lg:mt-8 lg:mb-0 lg:shadow-2xl mt-[10vh] h-[80vw] w-[80vw] shadow-black shadow-2xl rounded-xl lg:shadow-black"
           id="cvr"
         />
       </div>
 
       <div
-        class="btm flex justify-center sm:h-11 sm:mt-10 sm:pt-0 relative mt-[23vh]"
+        class="btm flex justify-center lg:h-11 lg:mt-10 lg:pt-0 relative mt-[23vh]"
       >
         <i
-          class="fa-solid fa-heart text-white fa-2x absolute sm:right-24 sm:bottom-5 right-8 bottom-6"
+          class="fa-solid fa-heart text-white fa-2x absolute lg:right-24 lg:bottom-5 right-8 bottom-6"
           id="icon"
         ></i>
+        <span class="flex flex-col absolute md:left-14 bottom-5 left-7">
         <span
-          class="absolute sm:left-24 bottom-9 left-8 text-white font-semibold text-xl"
+          class="lg:absolute lg:left-24 bottom-9 left-8 text-white font-semibold text-xl w-max"
           id="song_name"
         >
         </span>
+        <!-- absolute left-24 mt-1 -->
         <span
-          class="font-bold text-sm absolute left-24 mt-1 text-green-600"
+          class="font-bold text-sm lg:absolute lg:left-24 lg:mt-1 text-green-800"
           id="artist"
         ></span>
+      </span>
         <input
           type="range"
           name=""
           id="bar"
-          class="w-[90%] sm:mt-6 p-0 cursor-pointer bg-green-400"
+          class="w-[90%] lg:mt-6 p-0 cursor-pointer bg-green-400"
           value="0"
           min="0"
           max="100"
@@ -108,7 +111,6 @@
         </button>
       </div>
     </div>
-
 <!-- <script src="/script.js"></script> -->
 <script>
   // console.log("Welcome To Spotify");
