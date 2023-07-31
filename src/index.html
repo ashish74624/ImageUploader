@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      lg:mx-4
+      mx-0
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Spotify | Web player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script
+      src="https://kit.fontawesome.com/ce99412822.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="lg:relative">
+    <div class="lg:flex flex">
+      <div
+        class="lg:h-screen lg:border-black lg:border-8 lg:w-[17%] lg:block lg:bg-black lg:text-white lg:fixed lg:left-0 absolute bg-black lg:mt-0 mt-[8vh] w-[40%] md:w-[25%] text-white h-[92vh] left-0 bottom-0 hidden lg:pt-4"
+        id="sidebar"
+      >
+        <a href="index.html" class="lg:inline hidden">
+          <div class="flex">
+            <img src="/logo10.jpg" alt="Spotify Logo" class="h-16 bg-white" />
+            <span class="text-white font-semibold text-2xl pt-4 pl-4">
+              Spotify</span
+            >
+          </div>
+        </a>
+
+        <div>
+          <ul
+            class="lg:mt-8 lg:space-y-4 lg:ml-8 lg:flex-row lg:bg-black bg-black flex-row m-5"
+          >
+            <li
+              class="lg:hover:text-white lg:hover:cursor-pointer lg:text-gray-300 lg:text-base text-xs text-white"
+            >
+              <a href="index.html" class=""
+                ><i class="fa fa-home mr-4" aria-hidden="true"></i>Home</a
+              >
+            </li>
+            <li
+              class="lg:hover:text-white lg:hover:cursor-pointer lg:text-base lg:text-gray-300 text-xs text-white"
+            >
+              <i class="fa fa-search mr-4" aria-hidden="true"></i>Search
+            </li>
+            <li
+              class="lg:hover:text-white lg:hover:cursor-pointer lg:text-base lg:text-gray-300 text-xs text-white"
+            >
+              <i class="fa fa-bars mr-4" aria-hidden="true"></i>Library
+            </li>
+            <li
+              class="lg:hover:text-white lg:hover:cursor-pointer lg:text-base lg:text-gray-300 text-xs text-white"
+            >
+              <div class="mt-8">
+                <i class="fa fa-plus-square mr-4" aria-hidden="true"> </i>Create
+                Playlist
+              </div>
+            </li>
+
+            <li
+              class="lg:hover:text-white lg:hover:cursor-pointer lg:text-gray-300 text-xs lg:text-base text-white"
+            >
+              <i class="fa fa-heart mr-4" aria-hidden="true"></i> Liked Songs
+            </li>
+          </ul>
+        </div>
+        <div class="lg:mt-72 lg:ml-6 lg:text-xs text-[0.5rem] mt-64 ml-6">
+          <ul class="space-y-4">
+            <li class="hover:underline">Cookies</li>
+            <li class="hover:underline">Privacy</li>
+          </ul>
+        </div>
+      </div>
+      <!-- <nav class="lg:w-[83%]" -->
+      <nav
+        class="lg:flex flex lg:w-[83%] lg:justify-between lg:fixed lg:top-0 lg:right-0 lg:items-center bg-black bg-opacity-50 lg:h-16 w-screen justify-between h-[8vh] items-center fixed top-0"
+      >
+        <!-- Always add width before giving justify-something -->
+        <ul class="lg:block flex space-x-2">
+          <li class="lg:hidden block ml-4">
+            <!-- <img
+              src="spotify_logo.svg"
+              class="h-8 w-8 inline cursor-pointer"
+              onclick="show_bar();"
+              alt=""
+            /> -->
+            
+<svg class="h-8 w-8 inline cursor-pointer" onclick="show_bar();" width="800px" height="800px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+  <title>Spotify-color</title>
+  <desc>Created with Sketch.</desc>
+  <defs>
+
+</defs>
+  <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Color-" transform="translate(-200.000000, -460.000000)" fill="#00DA5A">
+          <path d="M238.16,481.36 C230.48,476.8 217.64,476.32 210.32,478.6 C209.12,478.96 207.92,478.24 207.56,477.16 C207.2,475.96 207.92,474.76 209,474.4 C217.52,471.88 231.56,472.36 240.44,477.64 C241.52,478.24 241.88,479.68 241.28,480.76 C240.68,481.6 239.24,481.96 238.16,481.36 M237.92,488.08 C237.32,488.92 236.24,489.28 235.4,488.68 C228.92,484.72 219.08,483.52 211.52,485.92 C210.56,486.16 209.48,485.68 209.24,484.72 C209,483.76 209.48,482.68 210.44,482.44 C219.2,479.8 230,481.12 237.44,485.68 C238.16,486.04 238.52,487.24 237.92,488.08 M235.04,494.68 C234.56,495.4 233.72,495.64 233,495.16 C227.36,491.68 220.28,490.96 211.88,492.88 C211.04,493.12 210.32,492.52 210.08,491.8 C209.84,490.96 210.44,490.24 211.16,490 C220.28,487.96 228.2,488.8 234.44,492.64 C235.28,493 235.4,493.96 235.04,494.68 M224,460 C210.8,460 200,470.8 200,484 C200,497.2 210.8,508 224,508 C237.2,508 248,497.2 248,484 C248,470.8 237.32,460 224,460" id="Spotify">
+
+</path>
+      </g>
+  </g>
+</svg>
+          </li>
+          <li class="lg:ml-4 lg:text-white text-white">
+            Welcome <span class="text-green-500">@ashish_kumar</span>
+          </li>
+        </ul>
+        <div>
+          <span>
+            <button
+              class="lg:py-3 lg:bg-white lg:px-8 lg:rounded-3xl lg:text-lg lg:font-medium mx-3 lg:hover:bg-green-500 lg:transition lg:duration-500 bg-white rounded-xl px-3 hover:bg-green-500 transition duration-300"
+            >
+              Log Out
+            </button>
+          </span>
+        </div>
+      </nav>
+    </div>
+    <!-- Main Body -->
+    <div
+      class="lg:bg-gradient-to-r lg:from-[#1e1e1e] lg:to-[#121212] bg-gradient-to-r from-[#1e1e1e] to-[#121212] lg:h-max lg:ml-[17%] lg:pb-20 lg:w-[83%] ml-0 pb-10 h-screen"
+    >
+      <ul
+        class="lg:flex lg:justify-between lg:w-[100%] lg:pt-16 flex justify-between w-screen pt-[10vh] mx-2 lg:pb-0 pb-[2vh]"
+      >
+        <li
+          class="lg:font-semibold lg:text-2xl  text-white lg:mx-4 lg:mb-4 font-medium text-lg "
+        >
+          Spotify Playlist
+        </li>
+        <li
+          class="lg:text-sm lg:text-gray-500 lg:font-semibold lg:mx-4 lg:mb-4 text-gray-500 font-medium text-xs mr-8"
+        >
+          SEE ALL
+        </li>
+      </ul>
+      <!-- overflow-y-scroll  lg:overflow-auto -->
+      <div
+        class="lg:flex lg:justify-evenly lg:mx-0 mx-[5vw] flex lg:w-[100%] lg:overflow-hidden overflow-y-scroll lg:space-x-0 space-x-[5vw]"
+      >
+        <!-- // 1st card// -->
+        <a href="play.html" class="music" id="1" onclick="run1.fill();">
+        <div
+          class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6">
+          <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2 ">
+           
+            <img
+              src="bg.jpg"
+              alt=""
+              srcset=""
+              class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw] "
+            />
+          </div>
+          <div class="lg:mx-4 mx-0 NAME">
+            <h1
+              class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+            ></h1>
+            <p
+              class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+            ></p>
+          </div>
+        </div>
+
+        <a href="play.html" class="music" id="2" onclick="run2.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- \\ 3rd card \\  -->
+
+        <a href="play.html" class="music" id="3" onclick="run3.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+        <!-- \\ 4th card  -->
+
+        <a href="play.html" class="music" id="4" onclick="run4.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+        <!-- \\ 5th Card \\  -->
+
+        <a href="play.html" class="music" id="5" onclick="run5.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- part 2 -->
+      <ul class="flex justify-between w-[100%] mt-[5vh]">
+        <li
+          class="lg:font-semibold lg:text-2xl lg:text-white text-white lg:mx-4 lg:mb-4 font-medium text-lg lg:ml-[5vw] mx-2"
+        >
+          Bollywood buzz
+        </li>
+        <li
+          class="lg:text-sm lg:text-gray-500 lg:font-semibold lg:mx-4 lg:mb-4 text-gray-500 font-medium text-xs mr-8"
+        >
+          SEE ALL
+        </li>
+      </ul>
+      <div class="flex mx-[5vw]">
+        <!-- \\ part 2 card 1 \\  -->
+        <a href="play.html" class="music" id="6" onclick="run6.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6 mx-[5vw]"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+        <!-- \\ part 2 card 2  -->
+        <a href="play.html" class="music" id="7" onclick="run7.fill();">
+          <div
+            class="lg:bg-[#121212] lg:h-[268px] lg:w-[188px] lg:rounded-lg bg-[#121212] lg:p-0 h-[17vh] w-[25vw] md:w-[18vw] md:h-max rounded-lg md:pb-6 mx-[5vw]"
+          >
+            <div class="lg:mx-4 lg:my-4 songItems mx-2 my-2">
+              <img
+                src="bg.jpg"
+                alt=""
+                srcset=""
+                class="lg:h-[150px] lg:w-[154px] lg:rounded-lg rounded-md h-[10vh] w-[21vw]"
+              />
+            </div>
+            <div class="lg:mx-4 mx-0 NAME">
+              <h1
+                class="lg:font-bold lg:text-base lg:text-white font-semibold text-xs text-white mx-4 lg:mx-0"
+              ></h1>
+              <p
+                class="lg:font-medium lg:text-sm lg:text-gray-500 lg:inline hidden"
+              ></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script>
+      let songItem = Array.from(document.getElementsByClassName("songItems"));
+let songItemR = Array.from(document.getElementsByClassName("songItemsR"));
+
+songs = [
+  {
+    songName: "Slim shady",
+    file: "songs/1.mp3",
+    cover: "img/1.jpeg",
+    Disc: '"The Real Slim Shady" is a song by American rapper Eminem',
+  },
+  {
+    songName: "Criminal",
+    file: "songs/2.mp3",
+    cover: "img/2.jpeg",
+    Disc: "The Criminal Lyrics from Ra One",
+  },
+  {
+    songName: "Lose you To love Me",
+    file: "songs/3.mp3",
+    cover: "img/3.jpeg",
+    Disc: "Song by Selena Gomeez",
+  },
+  {
+    songName: "Bombay To Punjab",
+    file: "songs/4.mp3",
+    cover: "img/4.jpeg",
+    Disc: "Song by Deep Jandu and Divine",
+  },
+  {
+    songName: "One Dance",
+    file: "songs/5.mp3",
+    cover: "img/5.jpeg",
+    Disc: '"One Dance" is a song by Canadian rapper and singer Drake',
+  },
+  {
+    songName: "Flo Rida- Low",
+    file: "songs/6.mp3",
+    cover: "img/6.jpeg",
+    Disc: '"Low" is the debut by rapper and singer Flo Rida',
+  },
+  {
+    songName: "Goliya",
+    file: "songs/7.mp3",
+    cover: "img/7.jpeg",
+    Disc: "Song by Diljit Dosanjh and Honey Singh",
+  },
+];
+let NAME = Array.from(document.getElementsByClassName("NAME"));
+let NAMER = Array.from(document.getElementsByClassName("NAMER"));
+
+console.log(songItem);
+songItem.forEach((element, i) => {
+  // console.log( element.getElementsByTagName("img")[0])
+  element.getElementsByTagName("img")[0].src = songs[i].cover;
+  // element.getElementsByTagName('h1')[0].innerText = songs[i].songName
+});
+NAME.forEach((element, i) => {
+  element.getElementsByTagName("h1")[0].innerText = songs[i].songName;
+  element.getElementsByTagName("p")[0].innerText = songs[i].Disc;
+});
+
+show_bar = () => {
+  let sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("hidden");
+};
+
+class Run {
+  constructor(id, song_name, artist, song) {
+    this.id = id;
+    this.songname = song_name;
+    this.artist = artist;
+
+    this.song = song;
+  }
+  fill = () => {
+    localStorage.setItem("id", this.id);
+    localStorage.setItem("song_name", this.songname);
+    localStorage.setItem("artist", this.artist);
+    localStorage.setItem("song", this.song);
+  };
+}
+let run1 = new Run("img/1.jpeg", "Slim Shady", "Eminem", "songs/1.mp3");
+let run2 = new Run("img/2.jpeg", "Criminal", "Akon", "songs/2.mp3");
+let run3 = new Run(
+  "img/3.jpeg",
+  "Lose You To Love Me",
+  "Salena Gomez",
+  "songs/3.mp3"
+);
+let run4 = new Run(
+  "img/4.jpeg",
+  "Bombay To Punjab",
+  "Deep Jandu, DIVINE",
+  "songs/4.mp3"
+);
+let run5 = new Run("img/5.jpeg", "One Dance", "Drake", "songs/5.mp3");
+let run6 = new Run("img/6.jpeg", "LOW", "Flo Rida", "songs/6.mp3");
+let run7 = new Run("img/7.jpeg", "Goliya", "Yo Yo Honey Singh", "songs/7.mp3");
+
+    </script>
+  </body>
+</html>
