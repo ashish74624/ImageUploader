@@ -84,18 +84,40 @@ app.get('/getFolderData/:folderName', async(req,res)=>{
 });
 
 app.get('/getImage/:folderName/:image',async(req,res)=>{
+    try{
 
+        const folders = await Folder.find({folderName:req.params.folderName});
+        if(!folders){
+             res.status(404).json({msg:'Folder Not Found'});
+        }
+        const imageName = await Folder.findOne(
+            {$and:
+                [
+                    {folderName: req.params.folderName},
+                    {imageName:req.params.image}
+                ]
+            }
+        ); // $and operator
+        if(!imageName){
+            res.status(404).json({msg:'Image Not Found'});
+        }
+        const version = imageName.imageCloud.versionName;
+        const generatedName = imageName.imageCloud.generatedName;
+        res.status(200).json(`https://res.cloudinary.com/deirqjd6e/image/upload/v${version}/${generatedName}`)
+    }catch(err){
+        res.status(500).json({msg:'Error Fetching Image'});
+    }
 })
 
 app.post('/upload', async(req,res)=>{
-    const result = await cloudinary.uploader.upload(req.body.image);
     try {
-        const imageName = await Folder.find({imageName:req.body.imageName})
-        if(imageName){
+        const imageName = await Folder.find({$and:[{folderName:req.body.folderName},{imageName:req.body.imageName}]});
+        // The problem is that even if there's no matching document in the database, the Folder.find() method will return an empty array ([]), so we need to add imageName.length >0
+        if(imageName.length>0){
             res.status(409).json({msg:"Image Name Already exists"});
         }
         else{
-
+            const result = await cloudinary.uploader.upload(req.body.image);
             const folderData = new Folder({
                 folderName: req.body.folderName,
                 imageName: req.body.imageName,

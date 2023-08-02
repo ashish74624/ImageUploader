@@ -110,7 +110,7 @@ export default function FolderPage() {
       </nav>
       <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 space-y-4 md:space-y-0'>
         {folderArray.map((data:any)=>(
-            <div className='w-80 h-80 bg-red-400 rounded-lg overflow-hidden relative' key={data._id}>
+            <div className='w-80 h-80 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-lg overflow-hidden relative' key={data._id}>
               <Image className=' object-cover h-80 w-80' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
               <span className=' bg-gray-300/50 w-full h-20 absolute bottom-0 flex justify-center items-center text-blue-800'>
                 {data.imageName}
