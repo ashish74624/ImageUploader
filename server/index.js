@@ -90,16 +90,23 @@ app.get('/getImage/:folderName/:image',async(req,res)=>{
 app.post('/upload', async(req,res)=>{
     const result = await cloudinary.uploader.upload(req.body.image);
     try {
-        const folderData = new Folder({
-            folderName: req.body.folderName,
-            imageName: req.body.imageName,
-            imageCloud:{
-                versionName:result.version,
-                generatedName:result.public_id,
-            }
-        });
-        await folderData.save();
-        res.status(200).json({msg:"Done"});
+        const imageName = await Folder.find({imageName:req.body.imageName})
+        if(imageName){
+            res.status(409).json({msg:"Image Name Already exists"});
+        }
+        else{
+
+            const folderData = new Folder({
+                folderName: req.body.folderName,
+                imageName: req.body.imageName,
+                imageCloud:{
+                    versionName:result.version,
+                    generatedName:result.public_id,
+                }
+            });
+            await folderData.save();
+            res.status(200).json({msg:"Done"});
+        }
     } catch (error) {
         res.status(500).json({msg:"Not Done"});
     }
