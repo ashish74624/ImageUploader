@@ -8,7 +8,11 @@ import Folder from './models/Folder.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json({ limit: '10mb' }))// For body parsing
 
 dotenv.config();
