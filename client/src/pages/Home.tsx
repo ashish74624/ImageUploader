@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import Navbar from '../components/Navbar';
 import toast, { Toaster } from 'react-hot-toast';
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -41,10 +40,6 @@ export default function Home() {
     };
   return (
     <main className='h-screen w-screen overflow-hidden'>
-      <Navbar />
-      
-
-
       <section className="w-screen h-screen bg-[#F3F4F7] flex justify-center ">
       <form onSubmit={createFolder} className='w-[500px] h-max p-4 bg-white shadow-md rounded-md mt-10'>
   <div className="mb-6">

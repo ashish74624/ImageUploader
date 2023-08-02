@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Navbar from "../components/Navbar";
 import { Link } from 'react-router-dom'
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -17,7 +16,6 @@ export default  function Folder() {
     // console.log(folders);
   return (
     <main className="bg-[#F3F4F7] h-screen w-screen overflow-hidden">
-    <Navbar/>
     <section className=" h-screen w-screen flex justify-center">
         
 <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 h-max mt-10">
