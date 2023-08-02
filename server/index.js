@@ -87,7 +87,7 @@ app.get('/getFolderData/:folderName', async(req,res)=>{
     }
 });
 
-app.get('/getImage/:folderName/:image',async(req,res)=>{
+app.get('/:folderName/:image',async(req,res)=>{
     try{
 
         const folders = await Folder.find({folderName:req.params.folderName});
