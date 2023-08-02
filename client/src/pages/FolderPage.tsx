@@ -6,7 +6,8 @@ import { Image } from 'react-bootstrap';
 import convertToBase64 from '../lib/convertToBase64';
 import Delete from '../Icons/Delete';
 
-const backend = import.meta.env.VITE_BACKEND
+const backend = import.meta.env.VITE_BACKEND;
+const cloudName = import.meta.env.VITE_CLOUD_NAME
 
 export default function FolderPage() {
   const [visible,setVisible] = useState(false);
@@ -110,11 +111,11 @@ export default function FolderPage() {
       <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 space-y-4 md:space-y-0'>
         {folderArray.map((data:any)=>(
             <div className='w-80 h-80 bg-red-400 rounded-lg overflow-hidden relative' key={data._id}>
-              <Image className=' object-cover h-80 w-80' src={`https://res.cloudinary.com/dcgjy3xv7/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
-              <span className=' bg-gray-300/50 w-full h-20 absolute bottom-0 flex justify-center items-center'>
+              <Image className=' object-cover h-80 w-80' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
+              <span className=' bg-gray-300/50 w-full h-20 absolute bottom-0 flex justify-center items-center text-blue-800'>
                 {data.imageName}
               </span>
-              <button onClick={()=>{deleteImage(data._id)}} className='px-2 py-2 bg-red-500 text-white rounded-lg absolute top-0 right-0'>
+              <button onClick={()=>{deleteImage(data._id)}} className='px-2 py-2 bg-red-500 rounded-lg absolute top-0 right-0'>
                 <Delete/>
               </button>
             </div>

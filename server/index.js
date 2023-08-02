@@ -65,7 +65,9 @@ app.get('/getFolders', async(req,res)=>{
     try{
         const doc = await Doc.find({});
         // console.log(doc[0].folders)
-        res.status(200).json({folderList: doc[0].folders})
+        const array = doc[0].folders
+        const arr = array.reverse();
+        res.status(200).json({folderList: arr})
     }catch{}
 })
 
