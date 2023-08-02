@@ -4,11 +4,12 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { v2 as cloudinary } from 'cloudinary';
 import Doc from './models/Doc.js';
+import Folder from './models/Folder.js';
 
 const app = express();
 
 app.use(cors());
-app.use(express.json())// For body parsing
+app.use(express.json({ limit: '10mb' }))// For body parsing
 
 dotenv.config();
 
@@ -68,6 +69,56 @@ app.get('/getFolders', async(req,res)=>{
     }catch{}
 })
 
+app.get('/getFolderData/:folderName', async(req,res)=>{
+    const folderName = req.params.folderName
+    // console.log(folderName)
+    try {
+        const folder = await Folder.find({folderName:folderName});
+        // console.log(folder);
+        res.status(200).json(folder);
+    } catch (error) {
+        
+    }
+});
+
+app.get('/getImage/:folderName/:image',async(req,res)=>{
+
+})
+
+app.post('/upload', async(req,res)=>{
+    const result = await cloudinary.uploader.upload(req.body.image);
+    try {
+        const folderData = new Folder({
+            folderName: req.body.folderName,
+            imageName: req.body.imageName,
+            imageCloud:{
+                versionName:result.version,
+                generatedName:result.public_id,
+            }
+        });
+        await folderData.save();
+        res.status(200).json({msg:"Done"});
+    } catch (error) {
+        res.status(500).json({msg:"Not Done"});
+    }
+});
+
+app.delete('/deleteImage/:id', async(req,res)=>{
+    let id=req.params.id;
+    try {
+        const image = await Folder.findOneAndDelete({_id:id},{new:true});
+        if (!image) {
+            // Image not found in the database
+            return res.status(404).json({ msg: 'Image not found' });
+          }
+      
+          // Successful deletion
+          res.status(200).json({ msg: 'Image deleted successfully' });
+    } catch (error) {
+        console.log("Failder to delet picture");
+        res.status(500).json({ error: 'Failed to delete picture' });
+    }
+})
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server Started on port : ${process.env.PORT}`)

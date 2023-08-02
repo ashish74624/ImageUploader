@@ -33,7 +33,7 @@ export default  function Folder() {
                         </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                        <Link to={`folder/${folder.folderName}`}>
+                        <Link to={`/folder/${folder.folderName}`}>
                         <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
                             {folder.folderName}
                         </p>

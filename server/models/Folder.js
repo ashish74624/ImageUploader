@@ -3,7 +3,10 @@ import mongoose from "mongoose";
 const FolderSchema = new mongoose.Schema({
     folderName: {type: String , required: true},
     imageName : {type: String , required: true},
-    image : {type:[{versionName:{type:String},generatedName:{type:String}}],default:[]}
+    imageCloud : {type:{
+        versionName:{type:String},
+        generatedName:{type:String}},
+        default:{}},
 },
 {collection:'Folder'});
 
