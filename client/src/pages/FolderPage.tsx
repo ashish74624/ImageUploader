@@ -100,7 +100,7 @@ export default function FolderPage() {
 
   return (
     <>
-    <main className='h-screen w-screen bg-[#F3F4F7] flex flex-col items-center'>
+    <main className='h-max pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center'>
       <nav className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4 divide-y-2 divide-gray-600 border-b-2 border-gray-600 py-2
       '>
         <h3 className=' font-mono text-xl md:text-3xl'>Folder: {folderName}</h3>
@@ -108,9 +108,9 @@ export default function FolderPage() {
           Upload
         </button>
       </nav>
-      <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 space-y-4 md:space-y-0'>
+      <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
         {folderArray.map((data:any)=>(
-            <div className='w-80 h-80 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-lg overflow-hidden relative' key={data._id}>
+            <div className=' w-64 h-64 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-lg overflow-hidden  my-2 relative' key={data._id} >
               <Image className=' object-cover h-80 w-80' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
               <span className=' bg-gray-300/50 w-full h-20 absolute bottom-0 flex justify-center items-center text-blue-800'>
                 {data.imageName}
@@ -120,7 +120,6 @@ export default function FolderPage() {
               </button>
             </div>
         ))}
-        
       </section>
       <Toaster/>
     </main>
