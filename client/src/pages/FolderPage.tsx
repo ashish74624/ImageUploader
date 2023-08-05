@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import CutIcon from '../Icons/CutIcon';
 import { Image } from 'react-bootstrap';
 import Delete from '../Icons/Delete';
-import DropZone from './DropZone';
+import DropZone from '../components/DropZone';
 
 const backend = import.meta.env.VITE_BACKEND;
 const cloudName = import.meta.env.VITE_CLOUD_NAME
