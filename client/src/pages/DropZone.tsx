@@ -1,5 +1,4 @@
-// ImageUploader.tsx
-import React, { useCallback, useState } from 'react';
+import  { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import UploadIcon from '../Icons/UploadIcon';
 import toast, { Toaster } from 'react-hot-toast';
@@ -7,17 +6,27 @@ import convertToBase64 from '../lib/convertToBase64';
 
 const backend = import.meta.env.VITE_BACKEND;
 
-const DropZone: React.FC = () => {
-  const [images, setImages] = useState<File[]>([]);
+interface DropZoneProps{
+    folderName:string
+}
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Process the dropped images here, if needed.
-    // For now, we'll just add them to the state.
-    setImages((prevImages) => [...prevImages, ...acceptedFiles]);
+const DropZone = ({folderName}:DropZoneProps) => {
+  const [images, setImages] = useState<{ name: string; base64: string }[]>([]); // Store objects with name and Base64
+
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    // Process the dropped images here, convert each image to Base64, and add them to the state.
+    for (const file of acceptedFiles) {
+      try {
+        const base64: string = await convertToBase64(file) as string; // Explicitly type 'base64' as string
+        setImages((prevImages) => [...prevImages, { name: file.name,  base64 }]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*' as any, // Specify the accepted file types here
+    accept: 'image/*' as any,
     onDrop,
     multiple: true,
   });
@@ -41,9 +50,9 @@ const DropZone: React.FC = () => {
                         "Content-Type":"application/json"
                     },
                     body: JSON.stringify({
-                      folderName: 'Test',
+                      folderName: folderName,
                       imageName: img.name ,
-                      image:img.path,
+                      image:img.base64,
                     })
                   }
                   )
@@ -74,25 +83,26 @@ const DropZone: React.FC = () => {
   }
 
   return (
-    <section className='h-max w-screen flex justify-center mt-10'>
-    <div >
+    <div className='h-screen w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <div className='flex flex-col justify-center items-center h-96 w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
+        <div className='flex flex-col justify-center items-center h-96 w-[85vw] md:w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
             <UploadIcon/>
-            <p>Drag and drop some images here, or click to select files</p>
+            <p className='text-base'>Drag and drop some images here</p>
         </div>
       </div>
       <div >
+        <div className='w-[85vw] md:w-[70vw] flex justify-center mt-6'>
       <button className=' bg-lime-300 px-3 py-1 md:px-4 md:py-2 rounded-full' onClick={()=>{imageUpload()}}>
           Upload
         </button>
-        <div className='grid grid-cols-5 w-[70vw]'>
+        </div>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-[85vw] md:w-[70vw]'>
             {images.map((image, index) => (
-                <div key={index} className="w-48 h-48 relative my-4">
+                <div key={index} className=" w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 relative my-4">
                 <img
-                  className="w-48 h-48 rounded-lg my-4"
-                  src={URL.createObjectURL(image)}
+                  className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-lg my-4"
+                  src={image.base64}
                   alt={`Image ${index}`}
                 />
                 <button
@@ -109,9 +119,8 @@ const DropZone: React.FC = () => {
                 ))}
         </div>
       </div>
-    </div>
     <Toaster/>
-    </section>
+    </div>
   );
 };
 

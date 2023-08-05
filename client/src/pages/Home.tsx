@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import toast, { Toaster } from 'react-hot-toast';
+import Folder from './Folder';
+
 
 const backend = import.meta.env.VITE_BACKEND;
 
@@ -22,6 +24,7 @@ export default function Home() {
             toast.dismiss();
             setTimeout(()=>{
                 toast.success(data.msg);
+                window.location.reload()
             },100)
           }
           else{
@@ -39,8 +42,8 @@ export default function Home() {
      
     };
   return (
-    <main className='h-screen w-screen overflow-hidden'>
-      <section className="w-screen h-screen bg-[#F3F4F7] flex justify-center ">
+    <main className='h-screen w-screen bg-[#F3F4F7] overflow-hidden'>
+      <section className="w-[65vw] mx-auto h-screen flex justify-between ">
       <form onSubmit={createFolder} className='w-[500px] h-max p-4 bg-white shadow-md rounded-md mt-10'>
   <div className="mb-6">
     <label htmlFor="folder" className="block mb-2 text-sm font-medium text-gray-900 ">Your Folder Name</label>
@@ -51,6 +54,7 @@ export default function Home() {
   
   <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Create Folder</button>
 </form>
+      <Folder/>
       </section>
       <Toaster/>
     </main>

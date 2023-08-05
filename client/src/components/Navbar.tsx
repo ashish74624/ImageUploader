@@ -12,7 +12,6 @@ export default function Navbar() {
             </Link>
             <span className='space-x-4 text-xl text-blue-600'>
               <Link to='/'>Home</Link>
-              <Link to={'/folder'}>Folders</Link>
               <Link to={'/dropzone'}>Dropzone</Link>
             </span>
         </nav>
