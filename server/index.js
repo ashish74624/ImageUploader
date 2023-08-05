@@ -115,6 +115,7 @@ app.get('/:folderName/:image',async(req,res)=>{
 
 app.post('/upload', async(req,res)=>{
     try {
+        // console.log(req.body.image)
         const imageName = await Folder.find({$and:[{folderName:req.body.folderName},{imageName:req.body.imageName}]});
         // The problem is that even if there's no matching document in the database, the Folder.find() method will return an empty array ([]), so we need to add imageName.length >0
         if(imageName.length>0){
