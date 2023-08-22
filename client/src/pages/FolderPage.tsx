@@ -5,6 +5,7 @@ import CutIcon from '../Icons/CutIcon';
 import { Image } from 'react-bootstrap';
 import Delete from '../Icons/Delete';
 import DropZone from '../components/DropZone';
+import Navbar from '../components/Navbar';
 
 const backend = import.meta.env.VITE_BACKEND;
 const cloudName = import.meta.env.VITE_CLOUD_NAME
@@ -19,7 +20,7 @@ export default function FolderPage() {
   const folderName = param.folderName;
   useEffect(()=>{
     const getFolderData = async ()=>{
-      const res = await fetch(`${backend}/getFolderData/${folderName}`);
+      const res = await fetch(`${backend}/api/folder/getFolderData/${folderName}`);
       const data = await res.json();
       setFolderArray(data);
       folderArray.sort();
@@ -29,7 +30,7 @@ export default function FolderPage() {
   
 
   const deleteImage =async (id:string) => {
-    const res = await fetch(`${backend}/deleteImage/${id}`,{
+    const res = await fetch(`${backend}/api/folder/deleteImage/${id}`,{
       method:"DELETE",
       headers:{
         "Content-Type":"application/json"
@@ -46,6 +47,7 @@ export default function FolderPage() {
 
   return (
     <>
+    <Navbar/>
     <main className='h-max min-h-screen pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center'>
       <nav className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2
       '>

@@ -7,7 +7,7 @@ export default  function Folder() {
     const [folders,setFolders]:any[] = useState([]);
     useEffect(()=>{
         const getFolders =async () => {
-            const res = await fetch(`${backend}/getFolders`);
+            const res = await fetch(`${backend}/api/folder/getFolders`);
             const data:any = await res.json();
             setFolders(data.folderList)
         }
@@ -22,7 +22,7 @@ export default  function Folder() {
    <div className="flow-root">
         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {folders.map((folder:any)=>(
-                <li className="py-3 sm:py-4">
+                <li className="py-3 sm:py-4" key={folder._id}>
                 <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">

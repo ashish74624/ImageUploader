@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import Folder from './Folder';
+import Navbar from '../components/Navbar';
 
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -12,7 +13,7 @@ export default function Home() {
       event.preventDefault();
       toast.loading("Creating Folder...");
       try{
-        const res = await fetch(`${backend}/addFolder/`,{
+        const res = await fetch(`${backend}/api/doc/addFolder/`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body : JSON.stringify({
@@ -42,6 +43,8 @@ export default function Home() {
      
     };
   return (
+    <>
+    <Navbar/>
     <main className='h-screen w-screen bg-[#F3F4F7] overflow-hidden'>
       <section className="w-[65vw] mx-auto h-screen flex justify-between ">
       <form onSubmit={createFolder} className='w-[500px] h-max p-4 bg-white shadow-md rounded-md mt-10'>
@@ -58,5 +61,6 @@ export default function Home() {
       </section>
       <Toaster/>
     </main>
+    </>
   )
 }
