@@ -1,8 +1,9 @@
 import  { FormEvent } from 'react'
 import { useState } from 'react'
 import toast , {Toaster}  from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
-
+const backend = import.meta.env.VITE_BACKEND
 
 export default function Register() {
   
@@ -13,20 +14,41 @@ export default function Register() {
   const [isDiabled,setIsDiabled] = useState(false);
 
     const handleRegister=async(event : FormEvent)=>{
+      event.preventDefault();
+      // Check if the email is in a valid format
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        toast.error('Please enter a valid email address.');
+        return;
+      }
+      try{
+        setIsDiabled(true)
+        const res = await fetch(`${backend}/api/users/register`,{
+          method:'POST',
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            firstName:firstName,
+            lastName:lastName,
+            email:email,
+            password:password
+        })});
+        const data = await res.json();
+        if(res.ok){
+          setIsDiabled(false)
+          toast.success('User registered');
+        }
+        else{
+          setIsDiabled(false)
+          toast.error(data.msg)
+        }
+      }catch{
+        setIsDiabled(false)
+        toast.error("Error in registration plz try later")
+      } 
     }
     
-      // Check if the email is in a valid format
-      // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      // if (!emailPattern.test(email)) {
-      //   toast.error('Please enter a valid email address.');
-      //   return;
-      // }
-    
-      // If all required fields are filled and email is valid, move to the next part
-      // setForm(false);
-    
-
-
   return (
     <>
       <main className='bg-[#F3F4F7] h-screen w-screen flex flex-col pt-12 items-center space-y-10 overflow-x-hidden overflow-y-scroll pb-32 font-mono'>
@@ -37,37 +59,39 @@ export default function Register() {
             <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-3 md:mb-6 group">
                 <input type="text" name="first_name" id="first_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer" placeholder=" " required
-                // onChange={}
+                onChange={(e)=>{setFirstName(e.target.value)}}
                 />
                 <label htmlFor="floating_first_name" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
             </div>
             <div className="relative z-0 w-full mb-3 md:mb-6 group">
                 <input type="text" name="floating_last_name" id="floating_last_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer" placeholder=" " required
-                // onChange={}
+                onChange={(e)=>{setLastName(e.target.value)}}
                 />
                 <label htmlFor="floating_last_name" className="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
             </div>
           </div>
           <div className="relative z-0 w-full mb-3 md:mb-6 group">
               <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none    focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer" placeholder=" " required
-              onChange={()=>{}}
+              onChange={(e)=>{setEmail(e.target.value)}}
               />
               <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
           </div>
           <div className="relative z-0 w-full mb-3 md:mb-6 group">
               <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer" placeholder=" " required
-              // onChange={()}
+              onChange={(e)=>{setPassword(e.target.value)}}
               />
               <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
           </div>
           <button 
+          disabled={isDiabled}
+          type='submit'
           className="text-white bg-blue-900 focus:ring-blue-500 focus:border-blue-500 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-            Next
+            Submit
           </button>          
       </form>
-      <p className='text-black text-xs mt-4'>Already have an account ?<a href={'/login'}><span className='text-xs text-blue-900 hover:underline pl-1'>Login</span></a> </p>
+      <p className='text-black text-xs mt-4'>Already have an account ?<Link to={'/login'}><span className='text-xs text-blue-900 hover:underline pl-1'>Login</span></Link> </p>
       </div>
-      {/* <Toaster/> */}
+      <Toaster/>
       </main>
     </>
   )

@@ -1,17 +1,53 @@
 import { FormEvent } from 'react'
 import { useState } from 'react'
 import toast , {Toaster}  from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+
+const backend = import.meta.env.VITE_BACKEND
 
 
 export default function Login() {
 
+  const navigate = useNavigate();
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [isDiabled,setIsDiabled] = useState(false);
 
 
   async function handleLogin(event: FormEvent) {
-
+    event.preventDefault();
+      // Check if the email is in a valid format
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        toast.error('Please enter a valid email address.');
+        return;
+      }
+      try{
+        setIsDiabled(true)
+        const res = await fetch(`${backend}/api/users/login`,{
+          method:'POST',
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            email:email,
+            password:password
+        })});
+        const data = await res.json();
+        if(res.ok){
+          localStorage.setItem("token",data.user);
+          toast.success('User Logged in');
+          navigate('/home')
+          setIsDiabled(false)
+        }
+        else{
+          toast.error(data.msg)
+          setIsDiabled(false)
+        }
+      }catch{
+        toast.error("Error loggin in plz try later")
+        setIsDiabled(false)
+      } 
   }  
 
 

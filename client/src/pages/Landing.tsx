@@ -1,23 +1,27 @@
-import { BrowserRouter as Router, Routes, Route ,useLocation } from "react-router-dom";
-import Home from "./Home";
-import Register from "./Register";
-import FolderPage from "./FolderPage";
-import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
 
-  const location = useLocation();
-
-  const isRegister : boolean = location.pathname === '/register'
-
   return (
-    <Router>
-      { !isRegister && <Navbar/>}
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path="/register"  element={<Register/>}/>
-        <Route path="/folder/:folderName" element={<FolderPage/>}/>
-      </Routes>
-    </Router>
+    <>
+    <main className="grid grid-cols-2 font-mono h-screen w-screen">
+      <section className=" bg-blue-400 text-white text-5xl justify-center items-center flex h-screen">
+        Image Uploader
+      </section>
+      <section className=" flex flex-col justify-center items-center h-screen">
+        <div className=" space-y-4">
+        <h3 className="text-3xl flex w-full justify-center">Welcome</h3>
+        <div className=" flex space-x-2">
+          <Link to={'/login'}>
+            <button className=" bg-blue-400 text-white px-4 py-2 rounded-lg">Login</button>
+          </Link>
+          <Link to={'/register'}>
+            <button className=" bg-blue-400 text-white px-4 py-2 rounded-lg">Sign Up</button>
+          </Link>
+        </div>
+        </div>
+      </section>
+    </main>
+    </>
   )
 }

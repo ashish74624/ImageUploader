@@ -1,13 +1,22 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import Folder from './Folder';
 import Navbar from '../components/Navbar';
+import jwt_decode from "jwt-decode";
+import { useNavigate } from 'react-router-dom'
+
+
+interface tokenType{
+  _id:string,email:string,firstName:string,lastName:string
+}
 
 
 const backend = import.meta.env.VITE_BACKEND;
 
 export default function Home() {
+    const navigate = useNavigate();
     const [folderName, setFolderName] = useState('');
+    const [user,setUser] = useState< tokenType | null>(null)
 
     async function createFolder(event: any)  {
       event.preventDefault();
@@ -42,9 +51,32 @@ export default function Home() {
       }
      
     };
+
+    const verify =async(token:any)=>{
+      const res = await fetch(`${backend}/api/users/verifyToken`,{
+        headers: {
+          'x-access-token':token 
+        }
+      });
+      if(!res.ok){
+        navigate('/');
+        setUser(null);
+      }
+    }
+
+    useEffect(()=>{
+      const token = localStorage.getItem('token');
+      if(token){
+        const user = jwt_decode(token) as tokenType; 
+        setUser(user)
+      }
+      verify(token)
+    },[])
+
   return (
     <>
     <Navbar/>
+    {user?.email}
     <main className='h-screen w-screen bg-[#F3F4F7] overflow-hidden'>
       <section className="w-[65vw] mx-auto h-screen flex justify-between ">
       <form onSubmit={createFolder} className='w-[500px] h-max p-4 bg-white shadow-md rounded-md mt-10'>
