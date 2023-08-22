@@ -1,7 +1,7 @@
 import  { FormEvent } from 'react'
 import { useState } from 'react'
 import toast , {Toaster}  from 'react-hot-toast'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate } from 'react-router-dom'
 
 const backend = import.meta.env.VITE_BACKEND
 
@@ -12,6 +12,7 @@ export default function Register() {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [isDiabled,setIsDiabled] = useState(false);
+  const navigate = useNavigate();
 
     const handleRegister=async(event : FormEvent)=>{
       event.preventDefault();
@@ -38,6 +39,7 @@ export default function Register() {
         if(res.ok){
           setIsDiabled(false)
           toast.success('User registered');
+          navigate('/login');
         }
         else{
           setIsDiabled(false)

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .img{
+        @apply h-auto max-w-full rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-gray-800
+    }
+}
