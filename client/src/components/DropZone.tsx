@@ -45,7 +45,7 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
     console.log(images)
         try{
             images.forEach(async(img:any)=>{
-                const res = await fetch(`${backend}/api/folder/${email}/upload`,{
+                const res = await fetch(`${backend}/${email}/upload`,{
                     method:'POST',
                     headers:{
                         "Content-Type":"application/json"

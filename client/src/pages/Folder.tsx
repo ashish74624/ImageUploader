@@ -8,7 +8,7 @@ export default  function Folder({userData}:any) {
     // console.log(userData)
     useEffect(()=>{
         const getFolders =async () => {
-            const res = await fetch(`${backend}/api/folder/${userData.email}/getFolders`);
+            const res = await fetch(`${backend}/${userData.email}/getFolders`);
             const data:any = await res.json();
             setFolders(data.folderList)
         }

@@ -21,7 +21,7 @@ export default function FolderPage() {
   const email = param.email;
   useEffect(()=>{
     const getFolderData = async ()=>{
-      const res = await fetch(`${backend}/api/folder/getFolderData/${email}/${folderName}`);
+      const res = await fetch(`${backend}/getFolderData/${email}/${folderName}`);
       const data = await res.json();
       setFolderArray(data);
       folderArray.sort();
@@ -31,7 +31,7 @@ export default function FolderPage() {
   
 
   const deleteImage =async (id:string) => {
-    const res = await fetch(`${backend}/api/folder/deleteImage/${id}`,{
+    const res = await fetch(`${backend}/deleteImage/${id}`,{
       method:"DELETE",
       headers:{
         "Content-Type":"application/json"

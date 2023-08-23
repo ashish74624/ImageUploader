@@ -28,7 +28,7 @@ mongoose.connect(process.env.URL)
 
 app.use('/api/users',userRoutes)
 app.use('/api/doc',docRoutes)
-app.use('/api/folder',folderRoutes)
+app.use('/',folderRoutes)
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server Started on port : ${process.env.PORT}`)
