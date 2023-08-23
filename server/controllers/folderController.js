@@ -5,8 +5,9 @@ import cloudinary from '../config/cloudinaryConfig.js';
 // Start writing functions
 
 export const getFolders = async(req,res)=>{
+    // console.log(req.params.email)
     try{
-        const doc = await Doc.find({});
+        const doc = await Doc.find({email:req.params.email});
         // console.log(doc[0].folders)
         const array = doc[0].folders
         const arr = array.reverse();
@@ -18,9 +19,10 @@ export const getFolders = async(req,res)=>{
 
 export const getFolderData = async(req,res)=>{
     const folderName = req.params.folderName
+    const email = req.params.email
     // console.log(folderName)
     try {
-        const folder = await Folder.find({folderName:folderName});
+        const folder = await Folder.find({folderName:folderName,email:email});
         // console.log(folder);
         res.status(200).json(folder);
     } catch (error) {
@@ -29,14 +31,16 @@ export const getFolderData = async(req,res)=>{
 }
 
 export const getImage = async(req,res)=>{
+    console.log(req.params.email)
     try{
-        const folders = await Folder.find({folderName:req.params.folderName});
+        const folders = await Folder.find({folderName:req.params.folderName,email:req.params.email});
         if(!folders){
              res.status(404).json({msg:'Folder Not Found'});
         }
         const imageName = await Folder.findOne(
             {$and:
                 [
+                    {email:req.params.email},
                     {folderName: req.params.folderName},
                     {imageName:req.params.image}
                 ]
@@ -56,7 +60,7 @@ export const getImage = async(req,res)=>{
 export const uploadImage = async(req,res)=>{
     try {
         // console.log(req.body.image)
-        const imageName = await Folder.find({$and:[{folderName:req.body.folderName},{imageName:req.body.imageName}]});
+        const imageName = await Folder.find({$and:[{folderName:req.body.folderName},{imageName:req.body.imageName},{email:req.params.email}]});
         // The problem is that even if there's no matching document in the database, the Folder.find() method will return an empty array ([]), so we need to add imageName.length >0
         if(imageName.length>0){
             res.status(409).json({msg:"Image Name Already exists"});
@@ -64,6 +68,7 @@ export const uploadImage = async(req,res)=>{
         else{
             const result = await cloudinary.uploader.upload(req.body.image);
             const folderData = new Folder({
+                email:req.params.email,
                 folderName: req.body.folderName,
                 imageName: req.body.imageName,
                 imageCloud:{

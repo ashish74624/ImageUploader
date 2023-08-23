@@ -7,10 +7,11 @@ import convertToBase64 from '../lib/convertToBase64';
 const backend = import.meta.env.VITE_BACKEND;
 
 interface DropZoneProps{
-    folderName:string
+    folderName:string,
+    email:string
 }
 
-const DropZone = ({folderName}:DropZoneProps) => {
+const DropZone = ({folderName,email}:DropZoneProps) => {
   const [images, setImages] = useState<{ name: string; base64: string }[]>([]); // Store objects with name and Base64
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
@@ -44,7 +45,7 @@ const DropZone = ({folderName}:DropZoneProps) => {
     console.log(images)
         try{
             images.forEach(async(img:any)=>{
-                const res = await fetch(`${backend}/api/folder/upload`,{
+                const res = await fetch(`${backend}/api/folder/${email}/upload`,{
                     method:'POST',
                     headers:{
                         "Content-Type":"application/json"

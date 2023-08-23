@@ -1,5 +1,6 @@
 import Doc from '../models/doc.js'
 import Folder from '../models/folder.js'
+import User from '../models/user.js'
 // Start with functions now
 
 export const home= async(req,res)=>{
@@ -13,10 +14,12 @@ export const addFolder = async(req,res)=>{
     }
     const folderName= req.body.folderName
     try{
-        const doc = await Doc.findOne();//Checking if doc exist or not
+        const user = await User.findOne({ email: req.params.email})
+        const doc = await Doc.findOne({ email: req.params.email});//Checking if doc exist or not
         if(!doc){
 
             const doc = new Doc({
+                email:req.params.email,
                 folders : [{folderName:folderName}]//If doc does not already exist we create a new doc and add folderName to if
             });
             await doc.save();

@@ -18,9 +18,10 @@ export default function FolderPage() {
   //OR
   //const {folderName } = useParams()
   const folderName = param.folderName;
+  const email = param.email;
   useEffect(()=>{
     const getFolderData = async ()=>{
-      const res = await fetch(`${backend}/api/folder/getFolderData/${folderName}`);
+      const res = await fetch(`${backend}/api/folder/getFolderData/${email}/${folderName}`);
       const data = await res.json();
       setFolderArray(data);
       folderArray.sort();
@@ -47,7 +48,7 @@ export default function FolderPage() {
 
   return (
     <>
-    <Navbar/>
+    <Navbar userData={null}/>
     <main className='h-max min-h-screen pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center'>
       <nav className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2
       '>
@@ -79,7 +80,7 @@ export default function FolderPage() {
     { visible &&(
         <section className='fixed top-0 flex justify-center h-screen w-screen bg-gray-950/50 overflow-x-hidden overflow-y-scroll'>
             <div className=''>
-              <DropZone folderName={folderName as string}/>
+              <DropZone folderName={folderName as string} email={email as string}/>
             </div>
             <button className='fixed top-0 right-6 rotate-45' onClick={()=>{setVisible(!visible)}}>
               <CutIcon/>

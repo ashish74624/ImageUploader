@@ -22,7 +22,7 @@ export default function Home() {
       event.preventDefault();
       toast.loading("Creating Folder...");
       try{
-        const res = await fetch(`${backend}/api/doc/addFolder/`,{
+        const res = await fetch(`${backend}/api/doc/${user?.email}/addFolder/`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body : JSON.stringify({
@@ -67,16 +67,15 @@ export default function Home() {
     useEffect(()=>{
       const token = localStorage.getItem('token');
       if(token){
-        const user = jwt_decode(token) as tokenType; 
-        setUser(user)
+        const userDecoded = jwt_decode(token) as tokenType; 
+        setUser(userDecoded)
       }
       verify(token)
     },[])
 
   return (
     <>
-    <Navbar/>
-    {user?.email}
+    <Navbar userData={user}/>
     <main className='h-screen w-screen bg-[#F3F4F7] overflow-hidden'>
       <section className="w-[65vw] mx-auto h-screen flex justify-between ">
       <form onSubmit={createFolder} className='w-[500px] h-max p-4 bg-white shadow-md rounded-md mt-10'>
@@ -89,7 +88,7 @@ export default function Home() {
   
   <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Create Folder</button>
 </form>
-      <Folder/>
+      <Folder userData={user}/>
       </section>
       <Toaster/>
     </main>

@@ -14,7 +14,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path='/home' element={<Home/>}/>
-        <Route path="/folder/:folderName" element={<FolderPage/>}/>
+        <Route path="/folder/:email/:folderName" element={<FolderPage/>}/>
       </Routes>
     </Router>
     

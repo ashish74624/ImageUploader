@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 
 const backend = import.meta.env.VITE_BACKEND;
 
-export default  function Folder() {
+export default  function Folder({userData}:any) {
     const [folders,setFolders]:any[] = useState([]);
+    // console.log(userData)
     useEffect(()=>{
         const getFolders =async () => {
-            const res = await fetch(`${backend}/api/folder/getFolders`);
+            const res = await fetch(`${backend}/api/folder/${userData.email}/getFolders`);
             const data:any = await res.json();
             setFolders(data.folderList)
         }
         getFolders();
-    },[])
+    },[userData])
     // console.log(folders);
   return (
 <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 h-max mt-10">
@@ -30,7 +31,7 @@ export default  function Folder() {
                         </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                        <Link to={`/folder/${folder.folderName}`}>
+                        <Link to={`/folder/${userData?.email}/${folder.folderName}`}>
                         <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
                             {folder.folderName}
                         </p>

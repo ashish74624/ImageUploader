@@ -3,13 +3,13 @@ import { getFolderData,getFolders,getImage,uploadImage,deleteImage } from '../co
 
 const router = express.Router();
 
-router.get('/getFolders',getFolders);
+router.get('/:email/getFolders',getFolders);
 
-router.get('/getFolderData/:folderName',getFolderData);
+router.get('/getFolderData/:email/:folderName',getFolderData);
 
-router.get('/:folderName/:image',getImage);
+router.get('/:email/:folderName/:image',getImage);
 
-router.post('/upload',uploadImage);
+router.post('/:email/upload',uploadImage);
 
 router.delete('/deleteImage/:id',deleteImage);
 

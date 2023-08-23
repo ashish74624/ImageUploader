@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const FolderSchema = new mongoose.Schema({
+    email:{type: String, required:true},
     folderName: {type: String , required: true},
     imageName : {type: String , required: true},
     imageCloud : {type:{
