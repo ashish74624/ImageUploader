@@ -63,7 +63,6 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
                   //   setFile('')
                     setTimeout(()=>{
                       toast.success(data.msg);
-                      setImages([]);
                     },100)
                   }
                   else{
@@ -94,9 +93,12 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
         </div>
       </div>
       <div >
-        <div className='w-[85vw] md:w-[70vw] flex justify-center mt-6'>
-      <button className=' bg-[#4A5699] w-20 h-10 rounded-lg text-white' onClick={()=>{imageUpload()}}>
+        <div className=' mt-2 space-x-2'>
+        <button className=' bg-[#4A5699] w-20 h-10 rounded-lg text-white' onClick={()=>{imageUpload()}}>
           Upload
+        </button>
+        <button className=' bg-[#4A5699] w-20 h-10 rounded-lg text-white' onClick={()=>{setImages([])}}>
+          Clear All
         </button>
         </div>
         <div className='grid grid-cols-2 gap-y-4 md:grid-cols-3 lg:grid-cols-5 w-[85vw] md:w-[70vw]'>
