@@ -54,8 +54,8 @@ export default function Login() {
 
   return (
     <>
-     <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2'>
-     <section className=" flex flex-col items-center justify-center h-screen w-[50vw] bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 pb-20">
+     <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2 bg-[#F3F4F7]'>
+     <section className="  hidden xl:flex flex-col items-center justify-center h-screen w-[50vw] bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 pb-20">
         <div className=" text-4xl text-white mb-4">
           <div className=" w-full justify-center flex">
             <Logo/>
@@ -69,10 +69,18 @@ export default function Login() {
         </div>
       </section>
         {/* Form */}
-        <section className=' h-screen w-[50vw] grid place-content-center bg-[#F3F4F7]'>
-
+        <section className=' h-[80vh] xl:h-screen w-screen xl:w-[50vw] flex flex-col justify-center items-center xl:grid xl:place-content-center bg-[#F3F4F7]'>
+        <div className=" block xl:hidden text-4xl text-[#4A5699] mb-4">
+          <div className=" w-full justify-center flex">
+            <Logo/>
+          </div>
+          <Link to={'/'}>
+            Image Uploader
+          </Link>
+          <h3 className= 'text-gray-800 text-2xl'>Login | Welcome Back</h3>
+        </div>
         
-      <div className='bg-white w-[350px] md:w-96 h-max py-8 rounded-xl px-8 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] justify-self-center mr-20'>
+      <div className='bg-white w-80 xl:w-96 h-max py-8 rounded-xl px-8 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] justify-self-center mr-0 mt-8 xl:mr-20 xl:mt-0'>
         <form onSubmit={handleLogin}>
           <div className='relative z-0 w-full mb-6 group '>
             <input type='email' name='email' id='email' className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer' placeholder=' ' required
