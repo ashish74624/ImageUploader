@@ -60,10 +60,10 @@ export default function FolderPage() {
       '>
         <h3 className=' font-mono text-xl md:text-3xl'>Folder: {folderName}</h3>
         <span>
-        <button className=' bg-lime-300 px-3 py-1 md:px-4 md:py-2 rounded-full' onClick={()=>{setVisible(!visible)}}>
+        <button className=' bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white' onClick={()=>{setVisible(!visible)}}>
           Upload
         </button>
-        <button className='bg-blue-300 px-3 py-1 md:px-4 md:py-2 rounded-full mx-2' onClick={()=>{window.location.reload();}}>
+        <button className='bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white mx-2' onClick={()=>{window.location.reload();}}>
           Refresh
         </button>
         </span>

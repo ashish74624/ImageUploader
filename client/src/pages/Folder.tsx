@@ -64,7 +64,7 @@ export default  function Folder({userData}:any) {
     <div className="flex items-center justify-between mb-4">
         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Folders</h5>
         <Dialog>
-            <DialogTrigger>Add Folder</DialogTrigger>
+            <DialogTrigger className=" hover:underline transition-all duration-300 no-underline">Add Folder</DialogTrigger>
             <DialogContent>
                 <DialogHeader className=" space-y-4">
                 {/* <DialogTitle>Add New Folder</DialogTitle> */}
