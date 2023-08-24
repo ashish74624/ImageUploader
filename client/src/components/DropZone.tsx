@@ -63,6 +63,7 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
                   //   setFile('')
                     setTimeout(()=>{
                       toast.success(data.msg);
+                      setImages([]);
                     },100)
                   }
                   else{
@@ -84,7 +85,7 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
   }
 
   return (
-    <div className='h-screen w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
+    <div className='h-screen pb-40 w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <div className='flex flex-col justify-center items-center h-96 w-[85vw] md:w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
@@ -94,15 +95,15 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
       </div>
       <div >
         <div className='w-[85vw] md:w-[70vw] flex justify-center mt-6'>
-      <button className=' bg-lime-300 px-3 py-1 md:px-4 md:py-2 rounded-full' onClick={()=>{imageUpload()}}>
+      <button className=' bg-[#4A5699] w-20 h-10 rounded-lg text-white' onClick={()=>{imageUpload()}}>
           Upload
         </button>
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-[85vw] md:w-[70vw]'>
+        <div className='grid grid-cols-2 gap-y-4 md:grid-cols-3 lg:grid-cols-5 w-[85vw] md:w-[70vw]'>
             {images.map((image, index) => (
                 <div key={index} className=" w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 relative my-4">
                 <img
-                  className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-lg my-4"
+                  className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-t-lg"
                   src={image.base64}
                   alt={`Image ${index}`}
                 />
@@ -112,9 +113,9 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
                 >
                   X
                 </button>
-                <p className='w-full h-4 text-lime-500 absolute bottom-0 text-sm text-ellipsis overflow-hidden'>
+                <div className=' bg-slate-600 rounded-b-lg w-full h-4 text-white py-4 grid place-content-center text-sm text-ellipsis overflow-hidden'>
                     {image.name}
-                </p>
+                </div>
               </div>
                 
                 ))}
