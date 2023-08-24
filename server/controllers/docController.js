@@ -54,6 +54,7 @@ export const deleteFolder=async(req,res)=>{
                 folders:{_id:req.body.id}
             }
         })   
+        const folder = await Folder.deleteMany({folderName:req.body.folderName})
         res.status(200).json({msg:'Deleted Successfully'})
     }catch{
         res.status(500).json({msg:'Bad Request'})

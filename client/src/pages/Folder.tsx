@@ -51,14 +51,15 @@ export default  function Folder({userData}:any) {
       }
     }
 
-    const deleteFolder=async(email:string,id:string)=>{
+    const deleteFolder=async(email:string,id:string,folderName:string)=>{
         try{
             const res = await fetch(`${backend}/api/doc/deleteFolder`,{
                 method:"DELETE",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     email:email,
-                    id:id
+                    id:id,
+                    folderName:folderName
                 })
             });
             if(res.ok){
@@ -136,7 +137,9 @@ export default  function Folder({userData}:any) {
                             This action cannot be undone. This will permanently delete your Folder
                             and remove your data from our servers.
                             <div className=" w-full h-max">
-                                <button onClick={()=>{deleteFolder(userData?.email,folder._id )}} className=" w-20 h-10 bg-red-500 rounded-lg text-white mt-2">
+                                <button 
+                                onClick={()=>{deleteFolder(userData?.email,folder._id,folder.folderName )}} 
+                                className=" w-20 h-10 bg-red-500 rounded-lg text-white mt-2">
                                     Delete
                                 </button>
                             </div>
