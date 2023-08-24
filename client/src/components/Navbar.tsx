@@ -29,7 +29,7 @@ export default function Navbar({userData}:any) {
             <DropdownMenu>
             <DropdownMenuTrigger className='bg-blue-900 text-white text-lg w-12 h-12 rounded-full'>{f}{l}</DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel onClick={logOut} className=' flex justify-center text-red-600'> Log Out </DropdownMenuLabel>
+              <DropdownMenuLabel onClick={logOut} className=' flex justify-center text-red-600 cursor-pointer'> Log Out </DropdownMenuLabel>
               </DropdownMenuContent>
             </DropdownMenu>
           }
