@@ -6,6 +6,12 @@ import { Image } from 'react-bootstrap';
 import Delete from '../Icons/Delete';
 import DropZone from '../components/DropZone';
 import Navbar from '../components/Navbar';
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
 
 const backend = import.meta.env.VITE_BACKEND;
 const cloudName = import.meta.env.VITE_CLOUD_NAME
@@ -64,14 +70,21 @@ export default function FolderPage() {
       </nav>
       <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
         {folderArray.map((data:any)=>(
-            <div className=' w-64 h-64 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-lg overflow-hidden  my-2 relative' key={data._id} >
-              <Image className=' object-cover h-80 w-80' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
-              <span className=' bg-gray-300/50 w-full h-20 absolute bottom-0 flex justify-center items-center text-blue-800'>
+            <div className=' w-64 h-64 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-t-lg my-2 relative' key={data._id} >
+              <Image className='h-64 w-64 rounded-t-lg' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
+              <span className=' bg-gray-700 w-full h-10 flex justify-between items-center text-white pb-1 rounded-b-lg px-4'>
                 {data.imageName}
+                <button onClick={()=>{deleteImage(data._id)}}>
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <Delete/>
+                    </HoverCardTrigger>
+                    <HoverCardContent className='px-0 w-36 text-red-500'>
+                      Delete this Image
+                    </HoverCardContent>
+                  </HoverCard>
+                </button>
               </span>
-              <button onClick={()=>{deleteImage(data._id)}} className='px-2 py-2 bg-red-500 rounded-lg absolute top-0 right-0'>
-                <Delete/>
-              </button>
             </div>
         ))}
       </section>
