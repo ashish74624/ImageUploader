@@ -26,8 +26,13 @@ export const addFolder = async(req,res)=>{
             res.status(201).json({msg:'Folder Created'});
         }else{
             //Creating Folder in the existing document
-            doc.folders.push({folderName:folderName})//Ye push/pop wala push h na ki push/pull wala
-            await doc.save()
+            const doc1 = await Doc.updateOne({email:req.params.email},{
+                $push:{
+                    folders: {folderName:folderName} // use this method it's better
+                }
+            })
+            // doc.folders.push({folderName:folderName})//Ye push/pop wala push h na ki push/pull wala
+            await doc1.save()
             res.status(201).json({msg:'Folder Created'});
             
 
@@ -37,4 +42,22 @@ export const addFolder = async(req,res)=>{
     }
 }
 
-export default {home,addFolder};
+export const deleteFolder=async(req,res)=>{
+    try{
+        const doc1 = await Doc.findOne({email:req.body.email});
+        if (!doc1) {
+            res.status(404).json({msg:'User Not Found'});
+        }
+        // console.log(doc.folders)
+        const doc = await Doc.updateOne({email:req.body.email},{
+            $pull :{
+                folders:{_id:req.body.id}
+            }
+        })   
+        res.status(200).json({msg:'Deleted Successfully'})
+    }catch{
+        res.status(500).json({msg:'Bad Request'})
+    }
+}
+
+export default {home,addFolder,deleteFolder};

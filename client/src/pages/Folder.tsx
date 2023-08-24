@@ -6,7 +6,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogHeader,
-    // DialogTitle,
+    DialogTitle,
     DialogTrigger,
     // DialogFooter,
   } from "@/components/ui/dialog"
@@ -50,6 +50,37 @@ export default  function Folder({userData}:any) {
             },100)
       }
     }
+
+    const deleteFolder=async(email:string,id:string)=>{
+        try{
+            const res = await fetch(`${backend}/api/doc/deleteFolder`,{
+                method:"DELETE",
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email:email,
+                    id:id
+                })
+            });
+            if(res.ok){
+                toast.dismiss();
+                setTimeout(()=>{
+                    toast.success('Deleted Successfully');
+                    window.location.reload();
+                },100)
+            }else{
+                toast.dismiss();
+                setTimeout(()=>{
+                    toast.error(`Error in deleting`); 
+                    },50)
+                }
+        }catch{
+            toast.dismiss();
+                setTimeout(()=>{
+                    toast.error(`Error in deleting`); 
+                    },50)
+        }
+    }
+
     useEffect(()=>{
         const getFolders =async () => {
             const res = await fetch(`${backend}/${userData.email}/getFolders`);
@@ -70,15 +101,12 @@ export default  function Folder({userData}:any) {
                 {/* <DialogTitle>Add New Folder</DialogTitle> */}
                 <DialogDescription>
                 <form onSubmit={createFolder} className='w-full h-max space-y-4'>
-  <div className="">
-    <label htmlFor="folder" className="block mb-2 font-medium text-gray-900 ">Folder Name</label>
-    <input type="text" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onChange={(e) => {
-                setFolderName(e.target.value);
-              }} required/>
-  </div>
-  
-  <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Create Folder</button>
-</form>
+                    <div className="">
+                        <label htmlFor="folder" className="block mb-2 font-medium text-gray-900 ">Folder Name</label>
+                        <input type="text" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onChange={(e) => {setFolderName(e.target.value)}} required/>
+                    </div>
+                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Create Folder</button>
+                </form>
                 </DialogDescription>
                 </DialogHeader>
             </DialogContent>
@@ -89,19 +117,34 @@ export default  function Folder({userData}:any) {
         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {folders.map((folder:any)=>(
                 <li className="py-3 sm:py-4" key={folder._id}>
-                <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
-                            
-                        </div>
+                <div className="flex items-center space-x-4 justify-between w-full">
+                    <div className=" flex space-x-4 ">
+
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
+                    <Link className="" to={`/folder/${userData?.email}/${folder.folderName}`}>
+                    <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
+                        {folder.folderName}
+                    </p>
+                    </Link>
                     </div>
-                    <div className="flex-1 min-w-0">
-                        <Link to={`/folder/${userData?.email}/${folder.folderName}`}>
-                        <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
-                            {folder.folderName}
-                        </p>
-                        </Link>
-                    </div>
+                    <Dialog>
+                    <DialogTrigger className="bg-white hover:bg-gray-200 transition-all border border-black w-28 h-8 rounded-lg">Delete Folder</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                        <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+                        <DialogDescription>
+                            This action cannot be undone. This will permanently delete your Folder
+                            and remove your data from our servers.
+                            <div className=" w-full h-max">
+                                <button onClick={()=>{deleteFolder(userData?.email,folder._id )}} className=" w-20 h-10 bg-red-500 rounded-lg text-white mt-2">
+                                    Delete
+                                </button>
+                            </div>
+                        </DialogDescription>
+                        </DialogHeader>
+                    </DialogContent>
+                    </Dialog>
+
                 </div>
             </li>
             ))}
