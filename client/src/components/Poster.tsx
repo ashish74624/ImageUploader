@@ -1,9 +1,9 @@
 
 export default function Poster() {
   return (
-    <section className=" relative">
+    <section className=" hidden md:block relative">
         <section className=" bg-blue-500">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-screen py-6 px-2 ">
+            <div className="grid grid-cols-2 gap-4 h-screen py-6 px-2 ">
                 <div className="grid gap-4">
                     <div>
                         <img className="img" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>

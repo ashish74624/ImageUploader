@@ -6,9 +6,9 @@ export default function Landing() {
 
   return (
     <>
-    <main className="grid grid-cols-2 font-mono h-screen w-screen overflow-hidden relative">
+    <main className="grid grid-cols-1 md:grid-cols-2 font-mono h-screen w-screen overflow-hidden relative">
       <Poster/>
-      <section className=" flex flex-col items-center h-screen bg-gradient-to-l from-blue-100 via-blue-300 to-blue-500 relative pt-36">
+      <section className=" flex flex-col items-center h-screen bg-gradient-to-t md:bg-gradient-to-l from-blue-100 via-blue-300 to-blue-500 relative w-screen md:w-[50vw] justify-center">
         <div className=" text-4xl text-white mb-4">
           <div className=" w-full justify-center flex">
             <Logo/>
