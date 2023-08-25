@@ -4,6 +4,10 @@ import cloudinary from '../config/cloudinaryConfig.js';
 
 // Start writing functions
 
+export const home= async(req,res)=>{
+    res.json({str:"Hello There !"})
+}
+
 export const getFolders = async(req,res)=>{
     // console.log(req.params.email)
     try{
@@ -102,4 +106,4 @@ export const deleteImage = async(req,res)=>{
     }
 }
 
-export default { getFolders,getFolderData,uploadImage,deleteImage,getImage }
+export default { home, getFolders,getFolderData,uploadImage,deleteImage,getImage }

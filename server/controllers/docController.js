@@ -3,10 +3,6 @@ import Folder from '../models/folder.js'
 import User from '../models/user.js'
 // Start with functions now
 
-export const home= async(req,res)=>{
-    res.json({str:"Hello There !"})
-}
-
 export const addFolder = async(req,res)=>{
     if(!req.body.folderName){
         console.log("No folder");
@@ -61,4 +57,4 @@ export const deleteFolder=async(req,res)=>{
     }
 }
 
-export default {home,addFolder,deleteFolder};
+export default {addFolder,deleteFolder};

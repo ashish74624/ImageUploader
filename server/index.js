@@ -2,7 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import { v2 as cloudinary } from 'cloudinary';
 import userRoutes from './routes/userRoutes.js'
 import folderRoutes from './routes/folderRoutes.js'
 import docRoutes from './routes/docRoutes.js'
@@ -30,9 +29,6 @@ app.use('/api/users',userRoutes)
 app.use('/api/doc',docRoutes)
 app.use('/',folderRoutes)
 
-app.get('/',async(req,res)=>{
-    res.status(200).json("Hello There !")
-})
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server Started on port : ${process.env.PORT}`)

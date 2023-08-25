@@ -1,7 +1,9 @@
 import express from 'express'
-import { getFolderData,getFolders,getImage,uploadImage,deleteImage } from '../controllers/folderController.js'
+import { home, getFolderData,getFolders,getImage,uploadImage,deleteImage } from '../controllers/folderController.js'
 
 const router = express.Router();
+
+router.get('/', home);
 
 router.get('/:email/getFolders',getFolders);
 
