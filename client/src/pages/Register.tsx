@@ -54,8 +54,8 @@ export default function Register() {
     
   return (
     <>
-      <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2'>
-     <section className=" flex flex-col items-center justify-center h-screen w-[50vw] bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 pb-20">
+     <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2 bg-[#F3F4F7]'>
+     <section className="  hidden xl:flex flex-col items-center justify-center h-screen w-[50vw] bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 pb-20">
         <div className=" text-4xl text-white mb-4">
           <div className=" w-full justify-center flex">
             <Logo/>
@@ -65,12 +65,20 @@ export default function Register() {
           </Link>
         </div>
         <div className=" space-y-4">
-          <h3 className= 'text-gray-800 text-3xl'>Create New Account</h3>
+          <h3 className= 'text-gray-800 text-3xl'>Create a New Account</h3>
         </div>
       </section>
         {/* Form */}
-        <section className=' h-screen w-[50vw] grid place-content-center bg-[#F3F4F7]'>
-
+        <section className=' h-[80vh] xl:h-screen w-screen xl:w-[50vw] flex flex-col justify-center items-center xl:grid xl:place-content-center bg-[#F3F4F7]'>
+        <div className=" block xl:hidden text-4xl text-[#4A5699] mb-4">
+          <div className=" w-full justify-center flex">
+            <Logo/>
+          </div>
+          <Link to={'/'}>
+            Image Uploader
+          </Link>
+          <h3 className= 'text-gray-800 text-2xl'>Create a New Account</h3>
+        </div>
         
         <div className='bg-white w-80 lg:w-96 h-max py-4 pb-5 lg:pb-8  lg:py-8 rounded-xl px-8 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'>
         

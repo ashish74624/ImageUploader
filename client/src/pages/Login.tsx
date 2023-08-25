@@ -96,7 +96,7 @@ export default function Login() {
           </div>
             <button disabled={isDiabled} type='submit' className='border-gray-300 text-gray-200 text-sm rounded-lg bg-blue-500 focus:ring-blue-500 focus:border-blue-500  font-medium px-5 py-2.5 text-center'>Submit</button>
         </form>
-          <p className="text-black text-xs mt-4">Don&apos;t have an account yet ?<a href={`/register`}><span className="text-xs text-blue-400 hover:underline pl-1">Sign up</span></a> </p>
+          <p className="text-black text-xs mt-4">Don&apos;t have an account yet ?<Link to={`/register`}><span className="text-xs text-blue-400 hover:underline pl-1">Sign up</span></Link> </p>
       </div>
       </section>
       <Toaster/>
