@@ -92,7 +92,7 @@ export default  function Folder({userData}:any) {
     },[userData])
     // console.log(folders);
   return (
-<div className="w-[50vw] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 h-max mt-10">
+<div className=" w-[90vw] md:w-[80vw] xl:w-[50vw] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 h-max mt-10">
     <div className="flex items-center justify-between mb-4">
         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Folders</h5>
         <Dialog>

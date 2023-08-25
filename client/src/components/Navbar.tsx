@@ -20,7 +20,7 @@ export default function Navbar({userData}:any) {
   }
   return (
     <div className='bg-[#F3F4F7] shadow-sm w-full flex justify-center min-h-[55px] h-[7vh] md:h-[8vh] lg:h-[10vh] border-b-2 border-gray-900 font-mono'>
-        <nav className=' bg-transparent flex items-center min-h-[55px] h-[7vh] md:h-[8vh] lg:h-[10vh] max-w-screen-xl justify-between w-full px-2'>
+        <nav className=' bg-transparent flex items-center min-h-[55px] h-[7vh] md:h-[8vh] lg:h-[10vh] max-w-screen-xl justify-between w-full mx-4 xl:mx-0 xl:px-2'>
           <Link className=' flex space-x-2' to={'/home'}>
             <SmallLogo/>
             <p className="text-[#4A5699] text-2xl md:text-3xl ">
