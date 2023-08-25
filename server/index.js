@@ -27,7 +27,7 @@ mongoose.connect(process.env.URL)
 
 app.use('/api/users',userRoutes)
 app.use('/api/doc',docRoutes)
-// app.use('/',folderRoutes)
+app.use('/',folderRoutes)
 
 
 app.listen(process.env.PORT,()=>{
