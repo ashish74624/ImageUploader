@@ -30,7 +30,6 @@ export default function FolderPage() {
       const res = await fetch(`${backend}/getFolderData/${email}/${folderName}`);
       const data = await res.json();
       setFolderArray(data);
-      folderArray.sort();
     }
     getFolderData();
   },[folderName])
@@ -58,7 +57,7 @@ export default function FolderPage() {
     <main className='h-max min-h-screen pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center'>
       <nav className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2
       '>
-        <h3 className=' font-mono text-xl md:text-3xl'>Folder: {folderName}</h3>
+        <h3 className=' font-mono text-xl md:text-3xl'>Folder: {folderName} | {folderArray.length} Images</h3>
         <span>
         <button className=' bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white' onClick={()=>{setVisible(!visible)}}>
           Upload
