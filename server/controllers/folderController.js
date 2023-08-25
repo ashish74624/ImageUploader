@@ -106,4 +106,4 @@ export const deleteImage = async(req,res)=>{
     }
 }
 
-export default { home, getFolders,getFolderData,uploadImage,deleteImage,getImage }
+export default { getFolders,getFolderData,uploadImage,deleteImage,getImage }
