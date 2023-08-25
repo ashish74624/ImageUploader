@@ -26,7 +26,7 @@ export const addFolder = async(req,res)=>{
             res.status(201).json({msg:'Folder Created'});
         }else{
             //Creating Folder in the existing document
-            const doc1 = await Doc.updateOne({email:req.params.email},{
+            const doc1 = await Doc.findOneAndUpdate({email:req.params.email},{
                 $push:{
                     folders: {folderName:folderName} // use this method it's better
                 }
@@ -49,7 +49,7 @@ export const deleteFolder=async(req,res)=>{
             res.status(404).json({msg:'User Not Found'});
         }
         // console.log(doc.folders)
-        const doc = await Doc.updateOne({email:req.body.email},{
+        const doc = await Doc.findOneAndUpdate({email:req.body.email},{
             $pull :{
                 folders:{_id:req.body.id}
             }

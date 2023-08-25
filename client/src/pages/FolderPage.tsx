@@ -68,11 +68,11 @@ export default function FolderPage() {
         </button>
         </span>
       </nav>
-      <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8'>
+      <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-8 justify-items-center'>
         {folderArray.map((data:any)=>(
             <div className=' w-64 h-64 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-t-lg my-2 relative' key={data._id} >
               <Image className='h-64 w-64 rounded-t-lg' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
-              <span className=' bg-gray-700 w-full h-10 flex justify-between items-center text-white pb-1 rounded-b-lg px-4'>
+              <span className=' bg-gray-700 w-full h-10 flex justify-between items-center text-white pb-1 rounded-b-lg px-4 relative'>
                 {data.imageName}
                 <button onClick={()=>{deleteImage(data._id)}}>
                   <HoverCard>

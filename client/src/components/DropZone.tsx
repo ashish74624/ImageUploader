@@ -84,15 +84,14 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
   }
 
   return (
-    <div className='h-screen pb-40 w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
+    <section className='h-screen pb-40 w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <div className='flex flex-col justify-center items-center h-96 w-[85vw] md:w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
+        <div className='flex flex-col justify-center items-center h-96 w-[85vw] xl:w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
             <UploadIcon/>
             <p className='text-base'>Drag and drop some images here</p>
         </div>
       </div>
-      <div >
         <div className=' mt-2 space-x-2'>
         <button className=' bg-[#4A5699] w-20 h-10 rounded-lg text-white' onClick={()=>{imageUpload()}}>
           Upload
@@ -101,11 +100,12 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
           Clear All
         </button>
         </div>
-        <div className='grid grid-cols-2 gap-y-4 md:grid-cols-3 lg:grid-cols-5 w-[85vw] md:w-[70vw]'>
+        
+        <div className='grid grid-cols-2 gap-y-12 md:grid-cols-3  lg:grid-cols-5 w-[85vw] xl:w-[70vw] justify-items-center mt-4'>
             {images.map((image, index) => (
-                <div key={index} className=" w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 relative my-4">
+                <article key={index} className="w-40 h-40 lg:w-48 lg:h-48 relative">
                 <img
-                  className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-t-lg"
+                  className="w-40 h-40 lg:w-48 lg:h-48 rounded-t-lg"
                   src={image.base64}
                   alt={`Image ${index}`}
                 />
@@ -115,16 +115,15 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
                 >
                   X
                 </button>
-                <div className=' bg-slate-600 rounded-b-lg w-full h-4 text-white py-4 grid place-content-center text-sm text-ellipsis overflow-hidden'>
+                <caption className=' bg-slate-600 rounded-b-lg w-full h-4 text-white py-4 grid place-content-center text-sm text-ellipsis overflow-hidden'>
                     {image.name}
-                </div>
-              </div>
+                </caption>
+              </article>
                 
                 ))}
         </div>
-      </div>
     <Toaster/>
-    </div>
+    </section>
   );
 };
 
