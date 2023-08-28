@@ -37,4 +37,6 @@ app.get('/',async(req,res)=>{
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server Started on port : ${process.env.PORT}`)
-})
+});
+
+module.exports = app;
