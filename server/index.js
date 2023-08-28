@@ -1,4 +1,4 @@
-// This is branch g2
+// This is g1 the normal one
 
 import express from 'express'
 import mongoose from 'mongoose'
@@ -267,4 +267,6 @@ app.delete('/deleteImage/:id', async(req,res)=>{
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server Started on port : ${process.env.PORT}`)
-})
+});
+
+module.exports = app;
