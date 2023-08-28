@@ -9,7 +9,7 @@ import docRoutes from './routes/docRoutes.js'
 const app = express();
 
 app.use(cors({
-  origin: '*',
+  origin: ['https://image-get.vercel.app/','https://imagedrop.vercel.app/','https://image-drop-ashish74624.vercel.app/','http://localhost:3000','http://localhost:3001'],
   methods: ['GET', 'PUT', 'POST', 'DELETE'],
   credentials: true
 }));
@@ -27,7 +27,7 @@ mongoose.connect(process.env.URL)
 
 app.use('/api/users',userRoutes)
 app.use('/api/doc',docRoutes)
-app.use('/api',folderRoutes)
+app.use('/',folderRoutes)
 
 app.get('/',async(req,res)=>{
     res.status(200).json("Hello There !")

@@ -4,10 +4,6 @@ import cloudinary from '../config/cloudinaryConfig.js';
 
 // Start writing functions
 
-export const home= async(req,res)=>{
-    res.json({str:"Hello There !"})
-}
-
 export const getFolders = async(req,res)=>{
     // console.log(req.params.email)
     try{
