@@ -12,10 +12,11 @@ import Doc from './models/doc.js'
 import dotenv from 'dotenv'
 import Folder from './models/folder.js'
 import User from './models/user.js'
+import bodyParser from 'body-parser'
 
 
-dotenv.config();
 const app = express();
+dotenv.config();
 
 app.use(cors({
   origin: ['https://image-get.vercel.app','https://imagedrop.vercel.app','https://image-drop-ashish74624.vercel.app','http://localhost:3000','http://localhost:3001'],
@@ -23,6 +24,8 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }))// For body parsing
+app.use(bodyParser.json({ limit: '10mb' })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 dotenv.config();
 
