@@ -1,5 +1,5 @@
-import Doc from '../models/doc.js'
-import Folder from '../models/folder.js'
+import Doc from '../models/Doc.js'
+import Folder from '../models/Folder.js'
 import User from '../models/user.js'
 // Start with functions now
 
