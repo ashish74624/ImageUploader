@@ -3,6 +3,7 @@ import { useState } from 'react'
 import toast , {Toaster}  from 'react-hot-toast'
 import { Link ,useNavigate } from 'react-router-dom'
 import Logo from '@/Icons/Logo'
+import Loading from '@/Icons/Loading'
 
 const backend = import.meta.env.VITE_BACKEND
 
@@ -113,7 +114,7 @@ export default function Register() {
             disabled={isDiabled}
             type='submit'
             className="text-white bg-blue-500 focus:ring-blue-500 focus:border-blue-500 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-              Sign Up
+              {isDiabled?<Loading/>:"Sign Up"}
             </button>          
         </form>
         <p className='text-black text-xs mt-4'>Already have an account ?<Link to={'/login'}><span className='text-xs text-blue-500 hover:underline pl-1'>Login</span></Link> </p>

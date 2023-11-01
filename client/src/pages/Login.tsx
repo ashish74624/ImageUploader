@@ -3,6 +3,7 @@ import { useState } from 'react'
 import toast , {Toaster}  from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '@/Icons/Logo'
+import Loading from '@/Icons/Loading'
 
 const backend = import.meta.env.VITE_BACKEND
 
@@ -94,7 +95,9 @@ export default function Login() {
             />
             <label htmlFor='floating_password' className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Password</label>
           </div>
-            <button disabled={isDiabled} type='submit' className='border-gray-300 text-gray-200 text-sm rounded-lg bg-blue-500 focus:outline-blue-900 active:bg-blue-900 active:outline-blue-500 font-medium px-5 py-2.5 text-center'>Log in</button>
+            <button disabled={isDiabled} type='submit' className='border-gray-300 text-gray-200 text-sm rounded-lg bg-blue-500 focus:outline-blue-900 active:bg-blue-900 active:outline-blue-500 font-medium px-5 py-2.5 text-center'>
+              {isDiabled?<Loading/>:"Log in"}
+            </button>
         </form>
           <p className="text-black text-xs mt-4">Don&apos;t have an account yet ?<Link to={`/register`}><span className="text-xs text-blue-400 hover:underline pl-1">Sign up</span></Link> </p>
       </div>

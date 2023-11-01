@@ -19,11 +19,11 @@ export default function Landing() {
         <div className=" space-y-4">
         <h3 className="text-[2rem] font-semibold flex w-full justify-center">Get Started</h3>
         <div className=" flex space-x-2">
-          <Link to={'/login'}>
-            <button className=" bg-blue-600 text-white w-36 h-12 text-2xl rounded-lg">Login</button>
+          <Link className=" focus:outline-none" to={'/login'}>
+            <button className=" bg-blue-600 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Login</button>
           </Link>
-          <Link to={'/register'}>
-            <button className=" bg-blue-600 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
+          <Link className=" focus:outline-none" to={'/register'}>
+            <button className=" bg-blue-600 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
           </Link>
         </div>
         </div>
