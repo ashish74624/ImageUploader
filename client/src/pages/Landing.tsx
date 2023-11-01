@@ -9,7 +9,8 @@ export default function Landing() {
     <main className="grid grid-cols-1 md:grid-cols-2 font-mono h-screen w-screen overflow-hidden relative">
       <Poster/>
       <section className=" flex flex-col items-center h-screen bg-gradient-to-t md:bg-gradient-to-l from-blue-100 via-blue-300 to-blue-500 relative w-screen md:w-[50vw] justify-center">
-        <div className=" text-4xl text-white mb-4">
+        <div className=" w-max h-max mb-20">
+        <div className=" text-4xl text-white mb-2">
           <div className=" w-full justify-center flex">
             <Logo/>
           </div>
@@ -24,6 +25,7 @@ export default function Landing() {
           <Link to={'/register'}>
             <button className=" bg-blue-600 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
           </Link>
+        </div>
         </div>
         </div>
       </section>
