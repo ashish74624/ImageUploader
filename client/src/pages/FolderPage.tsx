@@ -11,6 +11,8 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import Upload from '@/Icons/Upload';
+import Refresh from '@/Icons/Refresh';
 
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -60,10 +62,10 @@ export default function FolderPage() {
         <h3 className=' font-mono text-xl md:text-3xl'>Folder: {folderName} | {folderArray.length} Images</h3>
         <span>
         <button className=' bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white' onClick={()=>{setVisible(!visible)}}>
-          Upload
+          <Upload/>
         </button>
         <button className='bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white mx-2' onClick={()=>{window.location.reload();}}>
-          Refresh
+          <Refresh/>
         </button>
         </span>
       </nav>
