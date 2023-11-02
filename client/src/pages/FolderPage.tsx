@@ -12,6 +12,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { AnimatePresence, motion } from "framer-motion"
 
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -85,16 +86,18 @@ export default function FolderPage() {
       </section>
       <Toaster/>
     </section>
+    <AnimatePresence>
     { visible &&(
-        <section className='fixed top-0 flex justify-center h-screen w-screen bg-gray-950/50 overflow-x-hidden overflow-y-scroll'>
+        <motion.section initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} key={visible?1:0} className='fixed top-0 flex justify-center h-screen w-screen dark:bg-black/50 bg-gray-950/50 overflow-x-hidden overflow-y-scroll'>
             <div className=''>
               <DropZone folderName={folderName as string} email={email as string}/>
             </div>
             <button className='fixed top-0 right-6 rotate-45' onClick={()=>{setVisible(!visible)}}>
               <CutIcon/>
             </button>
-        </section>
+        </motion.section>
       )}
+      </AnimatePresence>
     </main>
   )
 }
