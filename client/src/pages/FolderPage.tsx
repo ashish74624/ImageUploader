@@ -3,16 +3,15 @@ import {useParams} from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
 import CutIcon from '../Icons/CutIcon';
 import { Image } from 'react-bootstrap';
-import Delete from '../Icons/Delete';
 import DropZone from '../components/DropZone';
 import Navbar from '../components/Navbar';
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
 import Upload from '@/Icons/Upload';
 import Refresh from '@/Icons/Refresh';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 
 const backend = import.meta.env.VITE_BACKEND;
@@ -54,7 +53,7 @@ export default function FolderPage() {
   }
 
   return (
-    <main className='dark'>
+    <main className=' relative'>
     <Navbar userData={null}/>
     <section className='h-max min-h-[90vh] pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center dark:bg-gray-900'>
       <div className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2 dark:bg-gray-900'>
@@ -68,24 +67,20 @@ export default function FolderPage() {
         </button>
         </span>
       </div>
-      <section className='w-[90vw] md:w-[85vw] lg:w-[70vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-8 justify-items-center'>
+      <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center mt-4'>
         {folderArray.map((data:any)=>(
-            <div className=' w-64 h-64 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 rounded-t-lg my-2 relative' key={data._id} >
-              <Image className='h-64 w-64 rounded-t-lg' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
-              <span className=' bg-gray-700 w-full h-10 flex justify-between items-center text-white pb-1 rounded-b-lg px-4 relative'>
-                {data.imageName}
-                <button onClick={()=>{deleteImage(data._id)}}>
-                  <HoverCard>
-                    <HoverCardTrigger>
-                      <Delete/>
-                    </HoverCardTrigger>
-                    <HoverCardContent className='px-0 w-36 text-red-500'>
-                      Delete this Image
-                    </HoverCardContent>
-                  </HoverCard>
-                </button>
-              </span>
-            </div>
+          <Dialog>
+            <DialogTrigger className=''>
+              <Image className='h-64 w-64 rounded-lg border border-black' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
+            </DialogTrigger>
+          <DialogContent className=''>
+            <Image className='h-80 w-full rounded-lg' src={`https://res.cloudinary.com/${cloudName}/image/upload/v${data.imageCloud.versionName}/${data.imageCloud.generatedName}`} alt='Pic'/>
+            <h3 className='dark:text-white'>{data.imageName}</h3>
+            <button className=' text-red-500 hover:underline' onClick={()=>{deleteImage(data._id)}}>
+              Delete
+            </button>
+          </DialogContent>
+        </Dialog>
         ))}
       </section>
       <Toaster/>

@@ -127,7 +127,7 @@ export default  function Folder({userData}:any) {
                         </p>
                     </Link>
                     <Dialog>
-                    <DialogTrigger className="bg-white hover:bg-red-500 hover:text-white transition-all border border-black w-28 h-8 rounded-lg duration-300">Delete</DialogTrigger>
+                    <DialogTrigger className="bg-white hover:bg-red-500 hover:text-white dark:hover:text-white transition-all border border-black w-28 h-8 rounded-lg dark:text-black duration-300">Delete</DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
                         <DialogTitle>Are you sure absolutely sure?</DialogTitle>

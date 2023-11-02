@@ -38,9 +38,9 @@ export default function Home() {
     },[])
 
   return (
-    <main className='dark'>
+    <main className=''>
     <Navbar userData={user}/>
-    <section className='h-[90vh] dark w-screen dark:bg-gray-900 bg-[#F3F4F7] overflow-hidden flex justify-center'>
+    <section className='h-[90vh] w-screen dark:bg-gray-900 bg-[#F3F4F7] overflow-hidden flex justify-center'>
       <Folder userData={user}/>
     </section>
     </main>

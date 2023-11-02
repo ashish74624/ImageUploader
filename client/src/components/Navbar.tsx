@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import SmallLogo from '@/Icons/SmallLogo';
+import { ModeToggle } from './ModeToggle';
 
 
 
@@ -27,6 +28,7 @@ export default function Navbar({userData}:any) {
                 Image Uploader
             </p>
           </Link>
+          <div className=' w-max h-12 flex items-center space-x-2'>
           {userData && 
             <DropdownMenu>
             <DropdownMenuTrigger className='bg-[#4A5699] text-white text-lg w-12 h-12 rounded-full'>{f}{l}</DropdownMenuTrigger>
@@ -35,8 +37,8 @@ export default function Navbar({userData}:any) {
               </DropdownMenuContent>
             </DropdownMenu>
           }
-          
-
+          <ModeToggle/>
+          </div>
         </nav>
     </div>
   )

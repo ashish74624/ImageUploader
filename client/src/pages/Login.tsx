@@ -70,7 +70,7 @@ export default function Login() {
         </div>
       </section>
         {/* Form */}
-        <section className=' h-[80vh] xl:h-screen w-screen xl:w-[50vw] flex flex-col justify-center items-center xl:grid xl:place-content-center bg-[#F3F4F7]'>
+        <section className=' h-[80vh] xl:h-screen w-screen xl:w-[50vw] flex flex-col justify-center items-center xl:grid xl:place-content-center bg-[#F3F4F7] dark:bg-gray-900'>
         <div className=" block xl:hidden text-4xl text-[#4A5699] mb-4">
           <div className=" w-full justify-center flex">
             <Logo/>
@@ -81,25 +81,25 @@ export default function Login() {
           <h3 className= 'text-gray-800 text-2xl'>Login | Welcome Back</h3>
         </div>
         
-      <div className='bg-white w-80 xl:w-96 h-max py-8 rounded-xl px-8 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] justify-self-center mr-0 mt-8 xl:mr-20 xl:mt-0'>
+      <div className='bg-white w-80 xl:w-96 h-max py-8 rounded-xl px-8 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] justify-self-center mr-0 mt-8 xl:mr-20 xl:mt-0 dark:bg-gray-800'>
         <form onSubmit={handleLogin}>
           <div className='relative z-0 w-full mb-6 group '>
-            <input type='email' name='email' id='email' className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer' placeholder=' ' required
+            <input type='email' name='email' id='email' className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer dark:text-white' placeholder=' ' required
             onChange={(e)=>{setEmail(e.target.value)}}
             />
-            <label htmlFor='floating_email' className='peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Email address</label>
+            <label htmlFor='floating_email' className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-white  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Email address</label>
           </div>
           <div className='relative z-0 w-full mb-6 group'>
-            <input type='password' name='password' id='password' className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer' placeholder=' ' required
+            <input type='password' name='password' id='password' className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#71B1D1] peer dark:text-white' placeholder=' ' required
             onChange={(e)=>{setPassword(e.target.value)}}
             />
-            <label htmlFor='floating_password' className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Password</label>
+            <label htmlFor='floating_password' className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#71B1D1] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Password</label>
           </div>
             <button disabled={isDiabled} type='submit' className='border-gray-300 text-gray-200 text-sm rounded-lg bg-blue-500 focus:outline-blue-900 active:bg-blue-900 active:outline-blue-500 font-medium px-5 py-2.5 text-center'>
               {isDiabled?<Loading/>:"Log in"}
             </button>
         </form>
-          <p className="text-black text-xs mt-4">Don&apos;t have an account yet ?<Link to={`/register`}><span className="text-xs text-blue-400 hover:underline pl-1">Sign up</span></Link> </p>
+          <p className="text-black text-xs mt-4 dark:text-white">Don&apos;t have an account yet ?<Link to={`/register`}><span className="text-xs text-blue-400 hover:underline pl-1">Sign up</span></Link> </p>
       </div>
       </section>
       <Toaster/>
