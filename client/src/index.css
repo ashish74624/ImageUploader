@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 @layer components{
+
+  ::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: rgba(4, 4, 108, 0.637);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgb(17,24,39);
+  }
+
+  
+
+
   .img{
       @apply h-auto max-w-full rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-gray-800
   }

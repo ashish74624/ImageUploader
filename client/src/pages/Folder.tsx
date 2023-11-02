@@ -97,7 +97,7 @@ export default  function Folder({userData}:any) {
     <div className="flex items-center justify-between mb-4">
         <h5 className="text-2xl font-bold leading-none text-gray-900 dark:text-white">Your Folders</h5>
         <Dialog>
-            <DialogTrigger className=" bg-blue-600 p-[2px] rounded-lg active:bg-blue-800 active:scale-90 transition-all duration-300">
+            <DialogTrigger className=" bg-[#4A5699] p-[2px] rounded-lg active:bg-[#2c3a85] active:scale-90 transition-all duration-300">
                 <Plus/>
             </DialogTrigger>
             <DialogContent>
@@ -120,7 +120,7 @@ export default  function Folder({userData}:any) {
         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {folders.map((folder:any)=>(
                 <li key={folder._id} className="flex items-center space-x-4 justify-between w-full ">
-                    <Link className=" flex w-full space-x-4 hover:bg-gray-100 bg-none py-3 sm:py-4 px-2 rounded-lg" to={`/folder/${userData?.email}/${folder.folderName}`}>
+                    <Link className=" flex w-full space-x-4 hover:bg-gray-100 dark:hover:bg-gray-700 bg-none py-3 sm:py-4 px-2 rounded-lg" to={`/folder/${userData?.email}/${folder.folderName}`}>
                         <span className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-4"></span>
                         <p className="text-lg w-full font-medium text-gray-900 dark:text-white">
                             {folder.folderName}
