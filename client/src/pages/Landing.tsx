@@ -31,7 +31,7 @@ export default function Landing() {
       </section>
       
       <div className=" absolute w-screen bottom-0 flex justify-center items-center h-8 bg-black text-white">
-          Created By: <a className=" hover:underline" href="https://github.com/ashish74624" target="_main">Ashish Kumar</a> 
+          Created By: <a className=" hover:underline" href="https://ashish74624.vercel.app" target="_main">Ashish Kumar</a> 
         </div>
     </main>
     </>
