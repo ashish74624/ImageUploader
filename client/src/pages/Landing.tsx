@@ -20,10 +20,10 @@ export default function Landing() {
         <h3 className="text-[2rem] font-semibold flex w-full justify-center">Get Started</h3>
         <div className=" flex space-x-2">
           <Link className=" focus:outline-none" to={'/login'}>
-            <button className=" bg-blue-600 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Login</button>
+            <button className=" bg-blue-600 hover:bg-blue-700 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Login</button>
           </Link>
           <Link className=" focus:outline-none" to={'/register'}>
-            <button className=" bg-blue-600 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
+            <button className=" bg-blue-600 hover:bg-blue-700 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
           </Link>
         </div>
         </div>
