@@ -10,7 +10,7 @@ function App() {
 
   return (
     <Router>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <Routes>
           <Route path='/' element={<Landing/>}/>
           <Route path="/register" element={<Register/>}/>
