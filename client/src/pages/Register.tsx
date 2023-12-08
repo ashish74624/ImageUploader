@@ -113,7 +113,7 @@ export default function Register() {
             <button 
             disabled={isDiabled}
             type='submit'
-            className="text-white bg-blue-500 focus:ring-blue-500 focus:border-blue-500 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+            className={`text-white bg-blue-500 focus:ring-blue-500 focus:border-blue-500 font-medium rounded-lg text-sm w-24 py-2.5 text-center ${isDiabled ? 'bg-gray-400' : 'bg-blue-500'} ${isDiabled ? '':'hover:bg-blue-700'} flex justify-center`}>
               {isDiabled?<Loading/>:"Sign Up"}
             </button>          
         </form>
