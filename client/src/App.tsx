@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import { ThemeProvider } from "./components/theme-provider";
+import HowItWorks from "./pages/HowItWorks";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path="/folder/:email/:folderName" element={<FolderPage/>}/>
+          <Route path="/howItWorks" element={<HowItWorks/>}/>
         </Routes>
       </ThemeProvider>
     </Router>
