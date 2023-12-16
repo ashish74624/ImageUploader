@@ -1,6 +1,3 @@
-Certainly! Here is the README.md content in Markdown format:
-
-  markdown
 # ImageDrop
 
 ImageDrop is a web application built using React, Express.js, and MongoDB that allows users to create accounts, upload, and organize multiple images into different folders. These stored images can be accessed through specific URLs for integration into various projects. The project also utilizes the React-Vite framework and Tailwind CSS for a fast and responsive user interface.
