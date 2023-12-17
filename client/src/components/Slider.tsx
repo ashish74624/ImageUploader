@@ -19,8 +19,19 @@ export default function Slider() {
           <img className=" h-full w-[750px]" src="/s1.png" alt="" />
         </div>
       </div>
-      <div className="h-[90vh] w-full rounded-lg px-8">
-        <img src="https://loremflickr.com/640/360" className="h-[90vh] w-full rounded-lg"/>
+      {/* 2nd slide */}
+      <div className="h-[90vh] w-[95vw] rounded-lg mx-8 flex bg-gray-100 overflow-hidden shadow-lg">
+        <div className="p-8 w-[55%] ">
+          <h2 className="text-gray-900 text-8xl">Step 2:</h2>
+          <h4 className="text-gray-900 text-5xl mt-4">Create a Folder</h4>
+          <p className="text-gray-900 text-xl mt-4">
+            Create a Folder to save all your images, this folder will be essential for the retrival of the images
+          </p>
+        </div>
+        <div className="">
+          {/* <img className=" h-[50%] w-[750px]" src="/s2.png" alt="" /> */}
+          <img className=" h-full w-[750px]" src="/s3.png" alt="" />
+        </div>
       </div>
       <div className="h-[90vh] w-full rounded-lg px-8">
         <img src="https://loremflickr.com/640/360" className="h-[90vh] w-full rounded-lg"/>
