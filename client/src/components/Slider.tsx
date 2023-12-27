@@ -47,8 +47,20 @@ export default function Slider() {
           <img className=" h-full w-[750px]" src="/s4.png" alt="" />
         </div>
       </div>
-      <div className="h-[90vh] w-full rounded-lg px-8">
-        <img src="https://loremflickr.com/640/360" className="h-[90vh] w-full rounded-lg"/>
+      {/* 4th */}
+      <div className="h-[90vh] w-[95vw] rounded-lg mx-8 flex bg-gray-100 overflow-hidden shadow-lg">
+        <div className="p-8 w-[55%] ">
+          <h2 className="text-gray-900 text-8xl">Step 4:</h2>
+          <h4 className="text-gray-900 text-5xl mt-4">Click on the Upload button</h4>
+          <p className="text-gray-900 text-xl mt-4">
+            After clicking on the upload button use the Drag n Drop or just select the files to upload  
+          </p>
+        </div>
+        <div className="">
+          {/* <img className=" h-[50%] w-[750px]" src="/s2.png" alt="" /> */}
+          <img className=" h-[30%] w-[750px]" src="/s5.png" alt="" />
+          <img className=" h-[70%] w-[750px]" src="/s6.png" alt="" />
+        </div>
       </div>
     </Carousel>
   )
