@@ -87,7 +87,7 @@ const DropZone = ({folderName,email}:DropZoneProps) => {
     <section className='h-screen pb-40 w-screen overflow-x-hidden overflow-y-scroll pt-24 flex flex-col items-center' >
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <div className='flex flex-col justify-center items-center h-96 w-[85vw] xl:w-[70vw] rounded-lg bg-blue-200 border-dashed border-2 border-blue-950' >
+        <div className='flex flex-col justify-center items-center h-96 w-[85vw] xl:w-[70vw] rounded-lg bg-blue-200 hover:bg-blue-300 transition-all border-dashed border-2 border-blue-950' >
             <UploadIcon/>
             <p className='text-base'>Drag and drop images here</p>
         </div>
