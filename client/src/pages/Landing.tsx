@@ -16,7 +16,7 @@ export default function Landing() {
           </div>
           Image Uploader
         </div>
-        <div className=" space-y-4">
+        <div className="w-max space-y-4">
         <h3 className="text-[2rem] font-semibold flex w-full justify-center">Get Started</h3>
         <div className=" flex space-x-2">
           <Link className=" focus:outline-none" to={'/login'}>
@@ -25,6 +25,9 @@ export default function Landing() {
           <Link className=" focus:outline-none" to={'/register'}>
             <button className=" bg-blue-600 hover:bg-blue-700 active:bg-blue-800 focus:outline-purple-400 focus:outline-4 text-white w-36 h-12 text-2xl rounded-lg">Sign Up</button>
           </Link>
+        </div>
+        <div className=" text-white w-max mx-auto">
+          <Link to={'/howItWorks'}>How it Works ?</Link>
         </div>
         </div>
         </div>
