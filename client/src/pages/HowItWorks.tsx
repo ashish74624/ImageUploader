@@ -48,7 +48,7 @@ export default function HowItWorks() {
         <AccordionItem className="px-2" value="item-3">
           <AccordionTrigger>Step 3 : Upload your photos</AccordionTrigger>
           <AccordionContent className="text-2xl">
-            After creating the folder click the upload icon and Drag n Drop your photos 
+            After creating the folder , go into the folder and click the upload icon and Drag n Drop your photos 
             <br />
             <img className=" h-72 rounded-lg shadow-lg mx-auto border-black border mt-2  w-72" src="/s4.png" alt="" />
 
