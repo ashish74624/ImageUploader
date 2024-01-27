@@ -55,7 +55,7 @@ export default function Login() {
 
   return (
     <>
-     <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2 bg-[#F3F4F7]'>
+     <main className=' h-screen w-screen overflow-x-hidden overflow-y-scroll font-mono grid grid-cols-2 bg-[#F3F4F7] dark:bg-gray-900'>
      <section className="  hidden xl:flex flex-col items-center justify-center h-screen w-[50vw] bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 pb-20">
         <div className=" text-4xl text-white mb-4">
           <div className=" w-full justify-center flex">
@@ -66,7 +66,7 @@ export default function Login() {
           </Link>
         </div>
         <div className=" space-y-4">
-          <h3 className= 'text-gray-800 text-3xl'>Login | Welcome Back</h3>
+          <h3 className= 'text-gray-800 dark:text-white text-3xl'>Login | Welcome Back</h3>
         </div>
       </section>
         {/* Form */}
