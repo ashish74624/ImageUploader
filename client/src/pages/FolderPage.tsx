@@ -57,8 +57,8 @@ export default function FolderPage() {
     <main className=' relative'>
     <Navbar userData={null}/>
     <section className='h-max min-h-[90vh] pb-10 w-screen bg-[#F3F4F7] flex flex-col items-center dark:bg-gray-900'>
-      <div className='flex w-[90vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2 dark:bg-gray-900'>
-        <h3 className=' font-mono text-xl md:text-3xl dark:text-white'>Folder: {folderName} | {folderArray.length} Images</h3>
+      <div className='flex w-[95vw] md:w-[85vw] lg:w-[70vw] items-center h-20 justify-between px-4  border-b-2 border-gray-600 py-2 dark:bg-gray-900'>
+        <h3 className=' font-mono text-xl md:text-3xl dark:text-white'>{folderName} | {folderArray.length} Images</h3>
         <span>
         <button className=' bg-[#4A5699] px-3 py-1 md:px-4 md:py-2 rounded-lg text-white' onClick={()=>{setVisible(!visible)}}>
           <Upload/>
