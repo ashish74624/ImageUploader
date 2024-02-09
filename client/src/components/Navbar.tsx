@@ -31,7 +31,7 @@ export default function Navbar({userData}:any) {
           <div className=' w-max h-12 flex items-center space-x-2'>
           {userData && 
             <DropdownMenu>
-            <DropdownMenuTrigger className='bg-[#4A5699] text-white text-lg w-12 h-12 rounded-full'>{f}{l}</DropdownMenuTrigger>
+            <DropdownMenuTrigger className='bg-[#4A5699] text-white text-lg w-10 h-10 md:w-12 md:h-12 rounded-full'>{f}{l}</DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel onClick={logOut} className=' flex justify-center text-red-600 cursor-pointer'> Log Out </DropdownMenuLabel>
               </DropdownMenuContent>
